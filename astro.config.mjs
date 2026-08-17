@@ -2,13 +2,14 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
-// ВАЖНО: замени на реальный домен после переноса DNS
-const SITE_URL = 'https://expressboda.com';
-
 export default defineConfig({
-  site: SITE_URL,
-  output: 'static', // чистый статический сайт, максимальная скорость
-  trailingSlash: 'always', // единый формат URL — избегаем дублей /page и /page/ (была проблема на one.com)
+  site: 'https://expressboda.com', // Указываем домен для канонических ссылок и sitemap
+  trailingSlash: 'always',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'de', 'es', 'ru'],
+    routing: 'prefix-always',
+  },
   integrations: [
     sitemap({
       i18n: {
@@ -22,7 +23,7 @@ export default defineConfig({
       },
     }),
     tailwind({
-      applyBaseStyles: false, // свои базовые стили в global.css, без лишнего веса
+      applyBaseStyles: false,
     }),
   ],
   compressHTML: true,
