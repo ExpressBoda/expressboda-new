@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Шрифты — Open Sans (текст) + Playfair Display (заголовки), как в брендинге текущего сайта.
+  Самохостинг: положи .woff2 файлы в /public/fonts/ и раскомментируй.
+  Это быстрее и надёжнее для PageSpeed, чем запрос к fonts.googleapis.com.
+*/
+/*
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/open-sans-latin-cyrillic.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/playfair-display.woff2') format('woff2');
+  font-display: swap;
+}
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}

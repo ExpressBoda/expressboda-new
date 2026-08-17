@@ -1,0 +1,15 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<footer class="border-t border-gray-100 mt-16">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500 flex justify-between">
+    <span>&copy; {new Date().getFullYear()} ExpressBoda</span>
+    <a href={`/${lang}/contact/`}>{t('nav.contact')}</a>
+  </div>
+</footer>
