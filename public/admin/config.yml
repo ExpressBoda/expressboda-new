@@ -1,16 +1,64 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: ExpressBoda/expressboda-new
   branch: main
+  base_url: https://expressboda-new.vercel.app
+  auth_endpoint: api/auth
 
-media_folder: "public/images"
-public_folder: "/images"
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  # ... (дальше ваши переводы)
+
+collections:
+  - name: "translations"
+    label: "Interface Translations"
     files:
-      - file: "src/content/settings.json"
-        name: "settings"
-        label: "Settings"
+      - file: "src/data/en.json"
+        label: "English (EN)"
+        name: "en_trans"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Home", name: "nav.home", widget: "string"}
+          - {label: "Services", name: "nav.services", widget: "string"}
+          - {label: "Guide", name: "nav.guide", widget: "string"}
+          - {label: "Pricing", name: "nav.pricing", widget: "string"}
+          - {label: "About", name: "nav.about", widget: "string"}
+          - {label: "Contact", name: "nav.contact", widget: "string"}
+          - {label: "Main CTA Button", name: "cta.main", widget: "string"}
+
+      - file: "src/data/de.json"
+        label: "Deutsch (DE)"
+        name: "de_trans"
+        fields:
+          - {label: "Startseite", name: "nav.home", widget: "string"}
+          - {label: "Leistungen", name: "nav.services", widget: "string"}
+          - {label: "Leitfaden", name: "nav.guide", widget: "string"}
+          - {label: "Preise", name: "nav.pricing", widget: "string"}
+          - {label: "Über uns", name: "nav.about", widget: "string"}
+          - {label: "Kontakt", name: "nav.contact", widget: "string"}
+          - {label: "CTA Button", name: "cta.main", widget: "string"}
+
+      - file: "src/data/es.json"
+        label: "Español (ES)"
+        name: "es_trans"
+        fields:
+          - {label: "Inicio", name: "nav.home", widget: "string"}
+          - {label: "Servicios", name: "nav.services", widget: "string"}
+          - {label: "Guía", name: "nav.guide", widget: "string"}
+          - {label: "Precios", name: "nav.pricing", widget: "string"}
+          - {label: "Nosotros", name: "nav.about", widget: "string"}
+          - {label: "Contacto", name: "nav.contact", widget: "string"}
+          - {label: "Botón Principal", name: "cta.main", widget: "string"}
+
+      - file: "src/data/ru.json"
+        label: "Русский (RU)"
+        name: "ru_trans"
+        fields:
+          - {label: "Главная", name: "nav.home", widget: "string"}
+          - {label: "Услуги", name: "nav.services", widget: "string"}
+          - {label: "Гид", name: "nav.guide", widget: "string"}
+          - {label: "Цены", name: "nav.pricing", widget: "string"}
+          - {label: "О нас", name: "nav.about", widget: "string"}
+          - {label: "Контакты", name: "nav.contact", widget: "string"}
+          - {label: "Кнопка Начать", name: "cta.main", widget: "string"}

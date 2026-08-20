@@ -1,6 +1,11 @@
 import { defineConfig } from 'astro/config';
 
+import tailwind from '@astrojs/tailwind';
+
 export default defineConfig({
-  site: 'https://ваш-домен.vercel.app', // Вставьте ваш домен
+  // Вставьте ваш домен
+  site: 'https://ваш-домен.vercel.app',
+
   output: 'static',
+  integrations: [tailwind()],
 });

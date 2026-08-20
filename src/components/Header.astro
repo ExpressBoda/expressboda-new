@@ -1,5 +1,5 @@
 ---
-import { useTranslations, languages, type Lang } from '../i18n/utils';
+import { useTranslations, type Lang } from '../i18n/utils';
 import { getAlternateLinks } from '../i18n/utils';
 
 interface Props {
@@ -10,20 +10,24 @@ const t = useTranslations(lang);
 const alternates = getAlternateLinks(Astro.url);
 ---
 
-<header class="border-b border-gray-100">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-    <a href={`/${lang}/`} class="font-serif text-xl">ExpressBoda</a>
-    <nav class="hidden md:flex gap-6 text-sm">
-      <a href={`/${lang}/services/`}>{t('nav.services')}</a>
-      <a href={`/${lang}/guide/`}>{t('nav.guide')}</a>
-      <a href={`/${lang}/pricing/`}>{t('nav.pricing')}</a>
-      <a href={`/${lang}/about/`}>{t('nav.about')}</a>
-      <a href={`/${lang}/contact/`}>{t('nav.contact')}</a>
+<header class="border-b border-gray-100 bg-white sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href={`/${lang}/`} class="font-serif text-xl font-bold text-slate-900">ExpressBoda</a>
+    
+    <nav class="hidden md:flex gap-6 text-sm text-slate-600">
+      <a href={`/${lang}/services/`} class="hover:text-slate-900 transition-colors">{t('nav.services')}</a>
+      <a href={`/${lang}/guide/`} class="hover:text-slate-900 transition-colors">{t('nav.guide')}</a>
+      <a href={`/${lang}/pricing/`} class="hover:text-slate-900 transition-colors">{t('nav.pricing')}</a>
+      <a href={`/${lang}/about/`} class="hover:text-slate-900 transition-colors">{t('nav.about')}</a>
+      <a href={`/${lang}/contact/`} class="hover:text-slate-900 transition-colors">{t('nav.contact')}</a>
     </nav>
-    {/* Переключатель языка — ведёт на ту же страницу на другом языке, не на главную */}
+
     <div class="flex gap-2 text-sm">
       {alternates.map((alt) => (
-        <a href={alt.href} class={alt.lang === lang ? 'font-bold' : 'text-gray-400'}>
+        <a 
+          href={alt.href} 
+          class={`px-2 py-1 rounded transition-colors ${alt.lang === lang ? 'bg-slate-100 font-bold text-slate-900' : 'text-slate-400 hover:text-slate-600'}`}
+        >
           {alt.lang.toUpperCase()}
         </a>
       ))}

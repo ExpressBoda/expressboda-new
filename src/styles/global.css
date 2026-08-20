@@ -27,3 +27,59 @@ html {
 .font-serif {
   font-family: 'Playfair Display', Georgia, serif;
 }
+
+/* --- Добавленные стили для квиза и элементов интерфейса --- */
+:root {
+  --accent: #0B53FB;
+  --accent-hover: #003ECC;
+  --whatsapp: #25D366;
+  --trustpilot-green: #00B67A;
+}
+
+.quiz-card { 
+  background: #fff; 
+  padding: 1.75rem; 
+  border-radius: 1rem; 
+  border: 1px solid #e2e8f0; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
+}
+
+.quiz-progress-bar { 
+  background: var(--accent); 
+  height: 100%; 
+  transition: width 0.3s ease; 
+}
+
+.btn-quiz { 
+  background: var(--accent); 
+  color: white; 
+  padding: 0.75rem 1.5rem; 
+  border-radius: 0.5rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  border: none;
+  transition: background 0.2s;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-quiz:hover { 
+  background: var(--accent-hover); 
+}
+
+.whatsapp-float { 
+  position: fixed; 
+  bottom: 2rem; 
+  right: 2rem; 
+  background-color: var(--whatsapp); 
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%; 
+  color: white; 
+  z-index: 1000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); 
+  text-decoration: none; 
+}

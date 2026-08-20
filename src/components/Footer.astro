@@ -1,15 +1,35 @@
 ---
-import { useTranslations, type Lang } from '../i18n/utils';
-interface Props {
-  lang: Lang;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
 ---
-
-<footer class="border-t border-gray-100 mt-16">
-  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500 flex justify-between">
-    <span>&copy; {new Date().getFullYear()} ExpressBoda</span>
-    <a href={`/${lang}/contact/`}>{t('nav.contact')}</a>
+<footer class="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <div>
+      <div class="font-serif text-white text-lg font-bold mb-3">ExpressBoda</div>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Direct legal support and document preparation for international couples marrying in Denmark through the Agency of Family Law (AFL).
+      </p>
+    </div>
+    <div>
+      <div class="text-white text-sm font-semibold mb-3">Quick Links</div>
+      <ul class="space-y-2 text-xs">
+        <li><a href="#compare" class="hover:text-white transition-colors">Why Denmark</a></li>
+        <li><a href="#pricing" class="hover:text-white transition-colors">Pricing Packages</a></li>
+        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-white text-sm font-semibold mb-3">Legal & Compliance</div>
+      <ul class="space-y-2 text-xs">
+        <li><a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-white text-sm font-semibold mb-3">Contact Agency</div>
+      <p class="text-xs text-slate-400 mb-2">Serra, Spain / Direct WhatsApp Support</p>
+      <a href="https://wa.me/34600000000" class="text-xs text-emerald-400 font-semibold hover:underline">Chat with us on WhatsApp →</a>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+    © {new Date().getFullYear()} ExpressBoda. All rights reserved.
   </div>
 </footer>

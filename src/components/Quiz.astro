@@ -1,0 +1,37 @@
+---
+// Компонент интерактивного квиза для Hero-секции
+---
+<div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl" id="quiz-container">
+  <div class="mb-6">
+    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">Interactive Check</span>
+    <h3 class="font-serif text-xl font-bold text-slate-900 mt-3">Check your eligibility for a Danish marriage</h3>
+    <p class="text-xs text-slate-500 mt-1">Takes less than 1 minute. Instant results.</p>
+  </div>
+
+  <!-- Шаг 1 квиза (пример структуры) -->
+  <div class="space-y-4 text-sm" id="quiz-step-1">
+    <label class="block font-medium text-slate-700">What are your citizenships / residencies?</label>
+    <div class="grid grid-cols-2 gap-3">
+      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
+        🇪🇺 EU + 🇪🇺 EU
+      </button>
+      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
+        🇪🇺 EU + 🌍 Non-EU
+      </button>
+    </div>
+
+    <label class="block font-medium text-slate-700 mt-4">Have you been married before?</label>
+    <div class="grid grid-cols-2 gap-3">
+      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
+        No, both single
+      </button>
+      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
+        Yes (divorced/widowed)
+      </button>
+    </div>
+
+    <button type="button" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl text-sm transition-colors shadow-sm">
+      Continue →
+    </button>
+  </div>
+</div>
