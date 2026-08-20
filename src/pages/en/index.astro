@@ -1,7 +1,7 @@
 ---
 // src/pages/en/index.astro
-import Layout from '/src/layouts/Layout.astro';
-import Quiz from '/src/components/Quiz.astro';
+import Layout from '../../layouts/BaseLayout.astro';
+import Quiz from '../../components/Quiz.astro';
 
 const lang = 'en';
 ---
@@ -13,54 +13,102 @@ const lang = 'en';
 >
 
   <!-- 1. HERO SECTION WITH QUIZ -->
-  <section class="bg-gradient-to-b from-slate-100 to-[#FAFAFC] py-14 px-6 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-start">
+  <section class="bg-gradient-to-b from-slate-100 to-[#FAFAFC] pt-14 pb-10 px-6 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
       
       <!-- Left Column: Value Proposition -->
-      <div class="md:col-span-7">
-        <div class="inline-flex items-center gap-2 mb-4 bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-200">
-          <span class="text-[#00B67A] font-bold">★★★★★</span>
-          <span class="text-xs font-semibold text-slate-700">5.0 on Trustpilot</span>
+      <div class="md:col-span-7 space-y-6">
+        
+        <!-- Активный виджет Trustpilot -->
+        <div class="max-w-[260px]">
+          <div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="64706bc1a10721677e3d43e9" data-style-height="50px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-style-alignment="left">
+            <a href="https://www.trustpilot.com/review/expressboda.com" target="_blank" rel="noopener">Trustpilot</a>
+          </div>
+          <script async src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" charset="utf-8"></script>
         </div>
 
-        <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight text-slate-900 mb-6">
+        <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
           Legal Marriage in Denmark for International Couples — Zero Bureaucracy
         </h1>
 
-        <p class="text-slate-600 text-base mb-8">
-          Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization.
+        <p class="text-slate-600 text-base leading-relaxed">
+          Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization for residency in Spain and the EU.
         </p>
 
-        <!-- Key Trust Badges / Stats Bar -->
-        <div class="grid grid-cols-3 gap-4 py-6 border-t border-b border-slate-200 mb-8">
-          <div>
-            <div class="font-serif text-2xl font-bold text-slate-900">1,200+</div>
-            <div class="text-xs text-slate-500">Registered Couples</div>
+        <!-- Список преимуществ / закрытие возражений -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-sm text-slate-700 font-medium">
+          <div class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+            No residency required in Denmark
           </div>
-          <div>
-            <div class="font-serif text-2xl font-bold text-slate-900">99.4%</div>
-            <div class="text-xs text-slate-500">First-Try AFL Approval</div>
+          <div class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+            Valid for EU Spousal Visas & Residencia
           </div>
-          <div>
-            <div class="font-serif text-2xl font-bold text-slate-900">2,300 DKK</div>
-            <div class="text-xs text-slate-500">Official Danish Fee</div>
+          <div class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+            Apostille & Legalization included
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+            Full legal contract & guarantees
           </div>
         </div>
 
-        <!-- Secondary CTA -->
-        <div class="flex items-center gap-4">
-          <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-md">
+        <!-- Secondary CTA & Microcopy -->
+        <div class="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl transition shadow-md">
             View Service Packages
           </a>
-          <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-blue-600 font-medium text-sm flex items-center gap-2">
-            💬 Free WhatsApp Consultation
-          </a>
+          <span class="text-xs text-slate-500">
+            ⚡ Or take a 2-min case check via the quiz on the right
+          </span>
         </div>
       </div>
 
       <!-- Right Column: Interactive Quiz Component -->
-      <div class="md:col-span-5 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
+      <div id="checker" class="md:col-span-5 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
         <Quiz />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 1.1 HERO BOTTOM TRUST BANNER (Светлая и легкая лента) -->
+  <section class="bg-white text-slate-800 py-6 px-6 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+      
+      <div class="flex items-center gap-4 justify-center md:justify-start">
+        <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold shrink-0">🏛️</div>
+        <div>
+          <div class="font-bold text-base text-slate-900">Since 2020</div>
+          <div class="text-xs text-slate-500">Years of proven expertise</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 justify-center md:justify-start">
+        <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-bold shrink-0">📈</div>
+        <div>
+          <div class="font-bold text-base text-slate-900">99.4% Success</div>
+          <div class="text-xs text-slate-500">First-try AFL approval rate</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 justify-center md:justify-start">
+        <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg font-bold shrink-0">💶</div>
+        <div>
+          <div class="font-bold text-base text-slate-900">From €495</div>
+          <div class="text-xs text-slate-500">Transparent pricing plans</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 justify-center md:justify-start">
+        <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-bold shrink-0">⚡</div>
+        <div>
+          <div class="font-bold text-base text-slate-900">Fast-Track</div>
+          <div class="text-xs text-slate-500">Direct agency submission</div>
+        </div>
       </div>
 
     </div>

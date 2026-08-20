@@ -1,37 +1,417 @@
 ---
-// Компонент интерактивного квиза для Hero-секции
+// src/components/Quiz.astro
 ---
-<div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl" id="quiz-container">
+
+<div id="express-boda-quiz" class="bg-white rounded-2xl p-6 shadow-xl border border-slate-200">
+  <!-- Catchy Header -->
+  <div class="text-center mb-6 pb-4 border-b border-slate-100">
+    <span class="inline-block bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2">
+      Danish Marriage Eligibility Check
+    </span>
+    <h2 class="font-serif text-2xl font-bold text-slate-900 leading-snug">
+      Can You Register Your Marriage in Denmark?
+    </h2>
+    <p class="text-xs text-slate-600 mt-1">
+      Take our 1-minute interactive quiz to check your chances and get a personalized plan.
+    </p>
+  </div>
+
+  <!-- Progress Bar -->
   <div class="mb-6">
-    <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">Interactive Check</span>
-    <h3 class="font-serif text-xl font-bold text-slate-900 mt-3">Check your eligibility for a Danish marriage</h3>
-    <p class="text-xs text-slate-500 mt-1">Takes less than 1 minute. Instant results.</p>
+    <div class="flex justify-between text-xs font-semibold text-slate-500 mb-2">
+      <span id="step-indicator">Step 1 of 5</span>
+      <span id="step-title">Citizenship</span>
+    </div>
+    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+      <div id="progress-bar" class="bg-blue-600 h-full transition-all duration-300" style="width: 20%;"></div>
+    </div>
   </div>
 
-  <!-- Шаг 1 квиза (пример структуры) -->
-  <div class="space-y-4 text-sm" id="quiz-step-1">
-    <label class="block font-medium text-slate-700">What are your citizenships / residencies?</label>
-    <div class="grid grid-cols-2 gap-3">
-      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
-        🇪🇺 EU + 🇪🇺 EU
-      </button>
-      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
-        🇪🇺 EU + 🌍 Non-EU
+  <form id="quiz-form" onsubmit="event.preventDefault();">
+    
+    <!-- STEP 1: Citizenships (EU / Non-EU) -->
+    <div class="quiz-step" data-step="1">
+      <h3 class="font-serif text-xl font-bold text-slate-900 mb-4">What are your citizenships?</h3>
+      
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Partner 1 Citizenship</label>
+          <select id="p1-citizenship" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none" required>
+            <option value="" disabled selected>Select option...</option>
+            <option value="eu">EU Country</option>
+            <option value="non-eu">Non-EU Country</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Partner 2 Citizenship</label>
+          <select id="p2-citizenship" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none" required>
+            <option value="" disabled selected>Select option...</option>
+            <option value="eu">EU Country</option>
+            <option value="non-eu">Non-EU Country</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" onclick="handleStep1Next()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition">
+        Continue →
       </button>
     </div>
 
-    <label class="block font-medium text-slate-700 mt-4">Have you been married before?</label>
-    <div class="grid grid-cols-2 gap-3">
-      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
-        No, both single
-      </button>
-      <button type="button" class="border border-slate-200 hover:border-blue-600 hover:bg-blue-50/50 p-3 rounded-xl text-left transition-all text-xs font-medium text-slate-800">
-        Yes (divorced/widowed)
+
+    <!-- STEP 2: Status Details (Dynamic for Non-EU) -->
+    <div class="quiz-step hidden" data-step="2">
+      <h3 class="font-serif text-xl font-bold text-slate-900 mb-4">Residency & Visa Status</h3>
+      
+      <div id="dynamic-status-container" class="space-y-4 mb-6">
+        <!-- Динамические поля для Non-EU -->
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" onclick="prevStep(1)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl transition">
+          ← Back
+        </button>
+        <button type="button" onclick="nextStep(3)" class="w-2/3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition">
+          Continue →
+        </button>
+      </div>
+    </div>
+
+
+    <!-- STEP 3: Marital Status for BOTH Partners -->
+    <div class="quiz-step hidden" data-step="3">
+      <h3 class="font-serif text-xl font-bold text-slate-900 mb-4">Marital Status</h3>
+      
+      <div class="space-y-6 mb-6">
+        <!-- Partner 1 Marital Status -->
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">Partner 1 Marital Status</label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 p-2.5 bg-white border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition">
+              <input type="radio" name="p1-marital" value="single" class="text-blue-600 focus:ring-blue-500" checked>
+              <span class="text-sm font-medium text-slate-800">Never married (Single)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 bg-white border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition">
+              <input type="radio" name="p1-marital" value="divorced" class="text-blue-600 focus:ring-blue-500">
+              <span class="text-sm font-medium text-slate-800">Divorced</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 bg-white border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition">
+              <input type="radio" name="p1-marital" value="widowed" class="text-blue-600 focus:ring-blue-500">
+              <span class="text-sm font-medium text-slate-800">Widowed</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Partner 2 Marital Status -->
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">Partner 2 Marital Status</label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 p-2.5 bg-white border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition">
+              <input type="radio" name="p2-marital" value="single" class="text-blue-600 focus:ring-blue-500" checked>
+              <span class="text-sm font-medium text-slate-800">Never married (Single)</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 bg-white border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition">
+              <input type="radio" name="p2-marital" value="divorced" class="text-blue-600 focus:ring-blue-500">
+              <span class="text-sm font-medium text-slate-800">Divorced</span>
+            </label>
+            <label class="flex items-center gap-3 p-2.5 bg-white border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition">
+              <input type="radio" name="p2-marital" value="widowed" class="text-blue-600 focus:ring-blue-500">
+              <span class="text-sm font-medium text-slate-800">Widowed</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" onclick="prevStep(2)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl transition">
+          ← Back
+        </button>
+        <button type="button" onclick="handleStep3Next()" class="w-2/3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition">
+          Continue →
+        </button>
+      </div>
+    </div>
+
+
+    <!-- STEP 4: Relationship Background & Proofs -->
+    <div class="quiz-step hidden" data-step="4">
+      <h3 class="font-serif text-xl font-bold text-slate-900 mb-4">Relationship Details</h3>
+      
+      <div class="space-y-4 mb-6 text-sm text-slate-700">
+        <!-- Вопрос о сожительстве (только если один ЕС + другой с Residence Permit, либо оба с Residence Permit) -->
+        <div id="cohabitation-question" class="hidden">
+          <label class="block font-semibold mb-1">Do you live together for more than 6 months?</label>
+          <select id="cohabit" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-slate-800">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Do you have common children together?</label>
+          <select id="children" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-slate-800">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">How long have you been in a relationship?</label>
+          <select id="duration" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-slate-800">
+            <option value="less-6">Less than 6 months</option>
+            <option value="6-12">From 6 months to 1 year</option>
+            <option value="1-3">From 1 to 3 years</option>
+            <option value="more-3">More than 3 years</option>
+          </select>
+        </div>
+
+        <!-- Доказательства отношений -->
+        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <label class="block font-semibold text-slate-900 mb-1">Can you provide proofs of your relationship (e.g., photos)?</label>
+          <p class="text-xs text-amber-800 mb-3 leading-relaxed">
+            ⚠️ Note: Photos and other proofs must cover the <strong>entire period</strong> of your relationship to satisfy Danish requirements.
+          </p>
+          <select id="proofs" class="w-full bg-white border border-amber-300 rounded-xl p-3 text-slate-800 font-medium">
+            <option value="yes">Yes, we have proofs for the entire period</option>
+            <option value="partial">Partially / need guidance</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" onclick="prevStep(3)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl transition">
+          ← Back
+        </button>
+        <button type="button" onclick="submitQuizToFinal()" class="w-2/3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition">
+          Get Instant Results →
+        </button>
+      </div>
+    </div>
+
+
+    <!-- STEP 5: Final Result & Lead Capture -->
+    <div class="quiz-step hidden" data-step="5">
+      <div class="text-center mb-6">
+        <div id="result-icon" class="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full text-2xl mb-3">✓</div>
+        <h3 id="result-heading" class="font-serif text-2xl font-bold text-slate-900 mb-2">Great news! You qualify</h3>
+        <p class="text-sm text-slate-600" id="result-summary-text">Your profile meets the initial criteria for fast-track Danish marriage registration.</p>
+      </div>
+
+      <div id="result-notice" class="bg-blue-50 border border-blue-100 p-4 rounded-xl mb-6 text-xs text-blue-900">
+        📌 <strong>Quiz completed successfully!</strong> Enter your contact details below to receive your personalized action plan, document checklist, and cost estimate directly.
+      </div>
+
+      <div class="space-y-3 mb-6">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Email Address</label>
+          <input type="email" id="lead-email" placeholder="name@example.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none" required />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">WhatsApp / Phone</label>
+          <input type="tel" id="lead-phone" placeholder="+34 600 00 00 00" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none" required />
+        </div>
+      </div>
+
+      <button type="button" onclick="sendLeadData()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition shadow-md">
+        Get My Personal Plan & Proposal
       </button>
     </div>
 
-    <button type="button" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl text-sm transition-colors shadow-sm">
-      Continue →
-    </button>
-  </div>
+  </form>
 </div>
+
+<script>
+  let quizData = {
+    p1: '',
+    p2: '',
+    p1Subtype: '',
+    p2Subtype: '',
+    p1Marital: 'single',
+    p2Marital: 'single',
+    cohabit: 'no',
+    children: 'no',
+    duration: 'less-6',
+    proofs: 'yes'
+  };
+
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  window.handleStep1Next = function() {
+    quizData.p1 = document.getElementById('p1-citizenship').value;
+    quizData.p2 = document.getElementById('p2-citizenship').value;
+    
+    if (!quizData.p1 || !quizData.p2) {
+      alert('Please select citizenship for both partners.');
+      return;
+    }
+    
+    buildDynamicStatusStep();
+    nextStep(2);
+  };
+
+  window.nextStep = function(step) {
+    document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+    document.querySelector(`[data-step="${step}"]`).classList.remove('hidden');
+
+    const progress = (step / 5) * 100;
+    document.getElementById('progress-bar').style.width = `${progress}%`;
+    document.getElementById('step-indicator').textContent = `Step ${step} of 5`;
+    
+    const titles = ['', 'Citizenship', 'Residency & Visa', 'Marital Status', 'Relationship', 'Final Proposal'];
+    document.getElementById('step-title').textContent = titles[step];
+  };
+
+  window.prevStep = function(step) {
+    document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+    document.querySelector(`[data-step="${step}"]`).classList.remove('hidden');
+    document.getElementById('progress-bar').style.width = `${(step / 5) * 100}%`;
+    document.getElementById('step-indicator').textContent = `Step ${step} of 5`;
+  };
+
+  function buildDynamicStatusStep() {
+    const container = document.getElementById('dynamic-status-container');
+    container.innerHTML = '';
+
+    [ {id: 'p1', name: 'Partner 1', type: quizData.p1}, {id: 'p2', name: 'Partner 2', type: quizData.p2} ].forEach(p => {
+      let html = `<div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+        <p class="font-bold text-xs text-slate-700 uppercase mb-2">${p.name} (${p.type === 'eu' ? 'EU Country' : 'Non-EU Country'})</p>`;
+      
+      if (p.type === 'non-eu') {
+        html += `<label class="block text-xs text-slate-600 mb-1">Select your status:</label>
+                 <select id="${p.id}-subtype" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs" onchange="toggleNonEuInputs('${p.id}')">
+                   <option value="visa-free">Visa-free Country</option>
+                   <option value="visa">Visa Required</option>
+                   <option value="residence">EU Residence Permit</option>
+                 </select>
+                 <div id="${p.id}-extra-input" class="mt-2"></div>`;
+      } else {
+        html += `<p class="text-xs text-emerald-600 font-medium">✓ Standard EU freedom of movement applies.</p>`;
+      }
+      html += `</div>`;
+      container.innerHTML += html;
+    });
+
+    if (quizData.p1 === 'non-eu') toggleNonEuInputs('p1');
+    if (quizData.p2 === 'non-eu') toggleNonEuInputs('p2');
+  }
+
+  window.toggleNonEuInputs = function(partnerId) {
+    const subtypeVal = document.getElementById(`${partnerId}-subtype`).value;
+    const extraContainer = document.getElementById(`${partnerId}-extra-input`);
+    
+    if (subtypeVal === 'visa') {
+      extraContainer.innerHTML = `<label class="block text-xs text-slate-600 mb-1">Visa expiry date (must be valid):</label>
+                                  <input type="date" id="${partnerId}-date" min="${todayStr}" class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs" required />`;
+    } else {
+      extraContainer.innerHTML = '';
+    }
+  };
+
+  window.handleStep3Next = function() {
+    quizData.p1Marital = document.querySelector('input[name="p1-marital"]:checked').value;
+    quizData.p2Marital = document.querySelector('input[name="p2-marital"]:checked').value;
+
+    const p1SubEl = document.getElementById('p1-subtype');
+    const p2SubEl = document.getElementById('p2-subtype');
+    quizData.p1Subtype = p1SubEl ? p1SubEl.value : 'eu';
+    quizData.p2Subtype = p2SubEl ? p2SubEl.value : 'eu';
+
+    const p1Date = document.getElementById('p1-date');
+    const p2Date = document.getElementById('p2-date');
+    if (p1Date && p1Date.value && p1Date.value < todayStr) {
+      alert('Partner 1 visa date cannot be in the past.');
+      return;
+    }
+    if (p2Date && p2Date.value && p2Date.value < todayStr) {
+      alert('Partner 2 visa date cannot be in the past.');
+      return;
+    }
+
+    // Условие отображения вопроса о сожительстве:
+    // Задается ТОЛЬКО если (Один ЕС + Другой с Residence Permit) ИЛИ (Оба с Residence Permit)
+    const showCohabitation = (
+      (quizData.p1 === 'eu' && quizData.p2Subtype === 'residence') ||
+      (quizData.p2 === 'eu' && quizData.p1Subtype === 'residence') ||
+      (quizData.p1Subtype === 'residence' && quizData.p2Subtype === 'residence')
+    );
+
+    const cohabBlock = document.getElementById('cohabitation-question');
+    if (showCohabitation) {
+      cohabBlock.classList.remove('hidden');
+    } else {
+      cohabBlock.classList.add('hidden');
+    }
+
+    if (quizData.p1 === 'eu' && quizData.p2 === 'eu') {
+      prepareFinalScreen('success');
+      nextStep(5);
+    } else {
+      nextStep(4);
+    }
+  };
+
+  window.submitQuizToFinal = function() {
+    quizData.children = document.getElementById('children').value;
+    quizData.duration = document.getElementById('duration').value;
+    quizData.proofs = document.getElementById('proofs').value;
+
+    // Проверка условий для высоких шансов:
+    // живут вместе (>6 месяцев или если вопрос скрыт, но есть дети + отношения > 1 года/3 лет),
+    // имеют детей ('yes') и отношения дольше 6 мес / 1 года / 3 лет.
+    const isCohabitYes = document.getElementById('cohabitation-question').classList.contains('hidden') || quizData.cohabit === 'yes';
+    const hasLongRelationship = (quizData.duration === '1-3' || quizData.duration === 'more-3' || quizData.duration === '6-12');
+
+    if (quizData.duration === 'less-6') {
+      prepareFinalScreen('attention');
+    } else if (isCohabitYes && quizData.children === 'yes' && hasLongRelationship) {
+      prepareFinalScreen('high-chances');
+    } else {
+      prepareFinalScreen('success');
+    }
+
+    nextStep(5);
+  };
+
+  function prepareFinalScreen(type) {
+    const icon = document.getElementById('result-icon');
+    const heading = document.getElementById('result-heading');
+    const summary = document.getElementById('result-summary-text');
+    const notice = document.getElementById('result-notice');
+
+    if (type === 'attention') {
+      icon.className = 'inline-flex items-center justify-center w-12 h-12 bg-amber-100 text-amber-600 rounded-full text-2xl mb-3';
+      icon.textContent = 'ℹ️';
+      heading.textContent = 'Your profile requires careful preparation';
+      summary.textContent = 'Cases with a relationship duration under 6 months need a well-structured evidence strategy to meet Familieretshuset standards.';
+      notice.className = 'bg-amber-50 border border-amber-200 p-4 rounded-xl mb-6 text-xs text-amber-900';
+      notice.innerHTML = '📌 <strong>Special attention required:</strong> Enter your contacts below so our legal experts can review your case details and build a solid application strategy.';
+    } else if (type === 'high-chances') {
+      icon.className = 'inline-flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full text-2xl mb-3';
+      icon.textContent = '🌟';
+      heading.textContent = 'Excellent news! Very high approval chances';
+      summary.textContent = 'Your strong profile (cohabitation, shared children, and established relationship history) puts you in an ideal position for a fast-track approval.';
+      notice.className = 'bg-emerald-50 border border-emerald-100 p-4 rounded-xl mb-6 text-xs text-emerald-900';
+      notice.innerHTML = '📌 <strong>Top priority profile:</strong> Enter your contact details below to claim your priority processing slot and personalized action plan.';
+    } else {
+      icon.className = 'inline-flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full text-2xl mb-3';
+      icon.textContent = '✓';
+      heading.textContent = 'Great news! You qualify';
+      summary.textContent = 'Your profile meets the initial criteria for fast-track Danish marriage registration.';
+      notice.className = 'bg-blue-50 border border-blue-100 p-4 rounded-xl mb-6 text-xs text-blue-900';
+      notice.innerHTML = '📌 <strong>Quiz completed successfully!</strong> Enter your contact details below to receive your personalized action plan, document checklist, and cost estimate directly.';
+    }
+  }
+
+  window.sendLeadData = function() {
+    const email = document.getElementById('lead-email').value;
+    const phone = document.getElementById('lead-phone').value;
+
+    if (!email || !phone) {
+      alert('Please fill in your email and phone number.');
+      return;
+    }
+
+    alert('Thank you! Your quiz has been successfully completed and your personal action plan is on its way to your email.');
+  };
+</script>

@@ -1,36 +1,135 @@
 ---
-import { useTranslations, type Lang } from '../i18n/utils';
-import { getAlternateLinks } from '../i18n/utils';
-
-interface Props {
-  lang: Lang;
-}
-const { lang } = Astro.props;
-const t = useTranslations(lang);
-const alternates = getAlternateLinks(Astro.url);
+// Header.astro
 ---
 
-<header class="border-b border-gray-100 bg-white sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-    <a href={`/${lang}/`} class="font-serif text-xl font-bold text-slate-900">ExpressBoda</a>
-    
-    <nav class="hidden md:flex gap-6 text-sm text-slate-600">
-      <a href={`/${lang}/services/`} class="hover:text-slate-900 transition-colors">{t('nav.services')}</a>
-      <a href={`/${lang}/guide/`} class="hover:text-slate-900 transition-colors">{t('nav.guide')}</a>
-      <a href={`/${lang}/pricing/`} class="hover:text-slate-900 transition-colors">{t('nav.pricing')}</a>
-      <a href={`/${lang}/about/`} class="hover:text-slate-900 transition-colors">{t('nav.about')}</a>
-      <a href={`/${lang}/contact/`} class="hover:text-slate-900 transition-colors">{t('nav.contact')}</a>
-    </nav>
-
-    <div class="flex gap-2 text-sm">
-      {alternates.map((alt) => (
-        <a 
-          href={alt.href} 
-          class={`px-2 py-1 rounded transition-colors ${alt.lang === lang ? 'bg-slate-100 font-bold text-slate-900' : 'text-slate-400 hover:text-slate-600'}`}
-        >
-          {alt.lang.toUpperCase()}
-        </a>
-      ))}
+<!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ -->
+<div class="top-bar">
+  <div class="top-bar-container">
+    <div class="lang-switcher">
+      <a href="/en/" class="active">ENG</a>
+      <a href="/de/">DEU</a>
+      <a href="/es/">ESP</a>
+      <a href="/ru/">RUS</a>
+    </div>
+    <div class="top-bar-right">
+      <div class="top-bar-phones">
+        <a href="tel:+491744019766">📞 +49 174 4019766</a>
+        <span class="phone-divider">|</span>
+        <a href="tel:+34611592877">📞 +34 611 592877</a>
+      </div>
+      <span class="phone-divider">•</span>
+      <a href="mailto:info@expressboda.com" class="top-bar-email">info@expressboda.com</a>
     </div>
   </div>
+</div>
+
+<!-- ОСНОВНАЯ ШАПКА -->
+<header>
+  <div class="header-container">
+    <a href="/" class="logo">
+      Express<span>Boda</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+
+    <nav id="navMenu">
+      <a href="#compare" class="nav-link">Why us?</a>
+      <a href="#services" class="nav-link">Services & Apostille</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      
+      <a href="https://wa.me/491754019766" target="_blank" class="btn-whatsapp-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+        WhatsApp
+      </a>
+      
+      <a href="#checker" class="btn-primary">Check chances</a>
+    </nav>
+  </div>
 </header>
+
+<style>
+  :root {
+    --primary: #0F172A;
+    --accent: #0B53FB;
+    --accent-hover: #003ECC;
+    --border: #E2E8F0;
+    --text-main: #334155;
+    --text-muted: #64748B;
+    --whatsapp: #25D366;
+  }
+
+  /* Верхняя панель */
+  .top-bar { background: #0F172A; color: #CBD5E1; font-size: 13px; padding: 8px 24px; border-bottom: 1px solid #1E293B; }
+  .top-bar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  
+  .lang-switcher { display: flex; gap: 12px; }
+  .lang-switcher a { color: #94A3B8; text-decoration: none; font-weight: 600; text-transform: uppercase; transition: color 0.2s; }
+  .lang-switcher a.active, .lang-switcher a:hover { color: #FFF; }
+
+  .top-bar-right { display: flex; align-items: center; gap: 14px; }
+  
+  .top-bar-phones { display: flex; gap: 8px; align-items: center; }
+  .top-bar-phones a { color: #F8FAFC; text-decoration: none; font-weight: 600; font-size: 13px; transition: color 0.2s; }
+  .top-bar-phones a:hover { color: var(--accent); }
+  
+  .top-bar-email { color: #CBD5E1; text-decoration: none; transition: color 0.2s; }
+  .top-bar-email:hover { color: #FFF; }
+  
+  .phone-divider { color: #475569; }
+
+  /* Основная шапка */
+  header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-container { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+  
+  .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--primary); text-decoration: none; }
+  .logo span { color: var(--accent); }
+  
+  nav { display: flex; gap: 20px; align-items: center; }
+  nav a.nav-link { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  nav a.nav-link:hover { color: var(--accent); }
+  
+  .btn-primary { background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.2s; border: none; cursor: pointer; display: inline-block; text-align: center; }
+  .btn-primary:hover { background: var(--accent-hover); }
+
+  .btn-whatsapp-header { background: var(--whatsapp); color: #fff; padding: 9px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 26px; color: var(--primary); }
+
+  @media (max-width: 900px) {
+    .menu-toggle { display: block; }
+    nav { 
+      display: none; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      width: 100%; 
+      background: #ffffff; 
+      flex-direction: column; 
+      align-items: stretch; 
+      padding: 20px 24px; 
+      border-bottom: 1px solid var(--border); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      gap: 16px;
+    }
+    nav.active { display: flex; }
+    nav a.nav-link { font-size: 16px; padding: 8px 0; border-bottom: 1px solid #F1F5F9; }
+    .btn-whatsapp-header { justify-content: center; padding: 12px; }
+    .top-bar-right { display: none; }
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle?.addEventListener('click', () => {
+    navMenu?.classList.toggle('active');
+  });
+
+  document.querySelectorAll('#navMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu?.classList.remove('active');
+    });
+  });
+</script>
