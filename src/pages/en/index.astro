@@ -1,91 +1,228 @@
 ---
 // src/pages/en/index.astro
 import Layout from '../../layouts/Layout.astro';
+import Quiz from '../../components/Quiz.astro';
+
+const lang = 'en';
 ---
 
-<Layout title="Fast & Legal Marriage in Denmark for International Couples | Express Boda">
-  
-  <!-- 1. First Screen (Hero Section) -->
-  <section class="hero">
-    <h1>Fast & Legal Marriage in Denmark for International Couples</h1>
-    <h2>Complete administrative support, paperwork assistance, and fast-track wedding registration in scenic Danish municipalities. Zero bureaucracy, stress-free process.</h2>
-    <div class="cta-group">
-      <a href="/en/services/" class="btn-primary">View Services & Pricing</a>
-      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Free WhatsApp Consultation</a>
+<Layout 
+  title="Fast & Legal Marriage in Denmark for International Couples | Express Boda"
+  description="Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization."
+  lang={lang}
+>
+
+  <!-- 1. HERO SECTION WITH QUIZ -->
+  <section class="bg-gradient-to-b from-slate-100 to-[#FAFAFC] py-14 px-6 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Value Proposition -->
+      <div class="md:col-span-7">
+        <div class="inline-flex items-center gap-2 mb-4 bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-200">
+          <span class="text-[#00B67A] font-bold">★★★★★</span>
+          <span class="text-xs font-semibold text-slate-700">5.0 on Trustpilot</span>
+        </div>
+
+        <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight text-slate-900 mb-6">
+          Legal Marriage in Denmark for International Couples — Zero Bureaucracy
+        </h1>
+
+        <p class="text-slate-600 text-base mb-8">
+          Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization.
+        </p>
+
+        <!-- Key Trust Badges / Stats Bar -->
+        <div class="grid grid-cols-3 gap-4 py-6 border-t border-b border-slate-200 mb-8">
+          <div>
+            <div class="font-serif text-2xl font-bold text-slate-900">1,200+</div>
+            <div class="text-xs text-slate-500">Registered Couples</div>
+          </div>
+          <div>
+            <div class="font-serif text-2xl font-bold text-slate-900">99.4%</div>
+            <div class="text-xs text-slate-500">First-Try AFL Approval</div>
+          </div>
+          <div>
+            <div class="font-serif text-2xl font-bold text-slate-900">2,300 DKK</div>
+            <div class="text-xs text-slate-500">Official Danish Fee</div>
+          </div>
+        </div>
+
+        <!-- Secondary CTA -->
+        <div class="flex items-center gap-4">
+          <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-md">
+            View Service Packages
+          </a>
+          <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-blue-600 font-medium text-sm flex items-center gap-2">
+            💬 Free WhatsApp Consultation
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Quiz Component -->
+      <div class="md:col-span-5 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
+        <Quiz />
+      </div>
+
     </div>
   </section>
 
-  <!-- 2. Trust & Benefits -->
-  <section class="benefits">
-    <h2>Why International Couples Choose Express Boda</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Fast-Track Processing</h3>
-        <p>Get your marriage approved and scheduled in days, not months, with our streamlined approach.</p>
+
+  <!-- 2. PAIN POINTS VS SOLUTIONS (Why Express Boda) -->
+  <section class="py-16 px-6 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">Why International Couples Choose ExpressBoda</h2>
+      <p class="text-slate-600">Compare DIY application risks with professional agency handling</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- DIY Risk Box -->
+      <div class="bg-red-50/50 border border-red-100 p-8 rounded-2xl">
+        <h3 class="text-red-700 font-bold text-lg mb-4 flex items-center gap-2">
+          ❌ DIY Application
+        </h3>
+        <ul class="space-y-3 text-slate-700 text-sm">
+          <li><strong>Risk of rejection:</strong> Small translation errors or missing paperwork can stall your case for months.</li>
+          <li><strong>Loss of 2,300 DKK:</strong> The official AFL fee is non-refundable if your application is rejected.</li>
+          <li><strong>Bureaucratic stress:</strong> Dealing with official Danish state correspondence alone.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>Full Administrative Support</h3>
-        <p>We handle all interactions with Familieretshuset and municipal offices on your behalf.</p>
-      </div>
-      <div class="card">
-        <h3>Global Recognition</h3>
-        <p>Receive an internationally valid marriage certificate recognized in the EU, Spain, and worldwide.</p>
+
+      <!-- ExpressBoda Solution Box -->
+      <div class="bg-emerald-50/50 border border-emerald-100 p-8 rounded-2xl">
+        <h3 class="text-emerald-700 font-bold text-lg mb-4 flex items-center gap-2">
+          ✅ Through ExpressBoda
+        </h3>
+        <ul class="space-y-3 text-slate-700 text-sm">
+          <li><strong>100% pre-audit:</strong> We thoroughly verify every scanned document before submission to AFL.</li>
+          <li><strong>Time saved:</strong> Receive your marriage approval rapidly without revisions.</li>
+          <li><strong>Full cycle:</strong> Assistance with translations, Ministry of Foreign Affairs, Apostille, and logistics.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 3. Core Services Overview -->
-  <section class="services-overview">
-    <h2>Our Core Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Standard Wedding in Denmark</h3>
-        <p>Complete paperwork and registration support for international couples.</p>
+
+  <!-- 3. SERVICES OVERVIEW (Commercial Grid) -->
+  <section id="services" class="bg-slate-50 py-16 px-6 border-t border-b border-slate-200">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">Transparent Pricing Packages</h2>
+        <p class="text-slate-600">No hidden fees. Choose the level of support you need.</p>
       </div>
-      <div class="service-card">
-        <h3>Same-Sex Weddings</h3>
-        <p>Specialized legal and administrative assistance for equal marriage registration.</p>
-      </div>
-      <div class="service-card">
-        <h3>Apostille & Legalization</h3>
-        <p>Official document legalization for use in your home country or Spain.</p>
-      </div>
-      <div class="service-card">
-        <h3>Duplicate Certificates</h3>
-        <p>Fast replacement ordering for lost or missing marriage certificates.</p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Package 1 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 mb-2">Standard Package</h3>
+            <p class="text-slate-500 text-sm mb-6">Ideal for straightforward cases seeking full professional preparation.</p>
+            <ul class="space-y-2 text-sm text-slate-700 mb-8">
+              <li>✓ Document verification & audit</li>
+              <li>✓ AFL application submission</li>
+              <li>✓ Municipality booking support</li>
+              <li>✓ Direct supervisor assistance</li>
+            </ul>
+          </div>
+          <a href="/en/services/standard" class="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition">
+            Select Package
+          </a>
+        </div>
+
+        <!-- Package 2 (Featured) -->
+        <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-blue-600 flex flex-col justify-between relative">
+          <div class="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            Most Popular
+          </div>
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 mb-2">Full-Cycle & Apostille</h3>
+            <p class="text-slate-500 text-sm mb-6">End-to-end service including legalization for international use.</p>
+            <ul class="space-y-2 text-sm text-slate-700 mb-8">
+              <li>✓ Everything in Standard Package</li>
+              <li>✓ Priority queue processing</li>
+              <li>✓ Apostille certification included</li>
+              <li>✓ Dedicated manager on WhatsApp</li>
+            </ul>
+          </div>
+          <a href="/en/services/full-cycle" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition">
+            Select Package
+          </a>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-xl text-slate-900 mb-2">Express & VIP</h3>
+            <p class="text-slate-500 text-sm mb-6">Urgent timelines and customized VIP concierge support.</p>
+            <ul class="space-y-2 text-sm text-slate-700 mb-8">
+              <li>✓ Accelerated document review</li>
+              <li>✓ Customized municipality choice</li>
+              <li>✓ VIP witness arrangements</li>
+              <li>✓ Full legal backing & guarantees</li>
+            </ul>
+          </div>
+          <a href="/en/services/vip" class="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition">
+            Select Package
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. FAQ Section for SEO -->
-  <section class="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>Is a Danish marriage recognized internationally?</h3>
-      <p>Yes. Marriage certificates issued in Denmark are fully legal and recognized worldwide, especially when accompanied by an Apostille.</p>
+
+  <!-- 4. STEP-BY-STEP PROCESS -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">How Your Marriage in Denmark Works</h2>
+      <p class="text-slate-600">A clear 4-step roadmap from start to your official certificate</p>
     </div>
-    <div class="faq-item">
-      <h3>Do we need to travel to Denmark for a long time?</h3>
-      <p>No, the actual ceremony takes only a short time, and many couples travel just for 1-2 days.</p>
+
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+        <div class="text-blue-600 font-bold text-xl mb-2">01</div>
+        <h4 class="font-bold text-slate-900 mb-1">Free Assessment</h4>
+        <p class="text-xs text-slate-600">You send us your documents, we check compliance instantly.</p>
+      </div>
+      <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+        <div class="text-blue-600 font-bold text-xl mb-2">02</div>
+        <h4 class="font-bold text-slate-900 mb-1">AFL Submission</h4>
+        <p class="text-xs text-slate-600">We file your application directly to the Danish Agency of Family Law.</p>
+      </div>
+      <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+        <div class="text-blue-600 font-bold text-xl mb-2">03</div>
+        <h4 class="font-bold text-slate-900 mb-1">Choose Date & Place</h4>
+        <p class="text-xs text-slate-600">Select your preferred scenic Danish town and wedding date.</p>
+      </div>
+      <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+        <div class="text-blue-600 font-bold text-xl mb-2">04</div>
+        <h4 class="font-bold text-slate-900 mb-1">Say "I Do"</h4>
+        <p class="text-xs text-slate-600">Travel for 1-2 days, have your ceremony, and get your certificate.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 5. SEO / EXPERT CONTENT & FAQ -->
+  <section class="bg-slate-50 py-16 px-6 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 text-center mb-10">Frequently Asked Questions</h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 mb-2">Is a Danish marriage recognized internationally?</h3>
+          <p class="text-slate-600 text-sm">Yes. Marriage certificates issued in Denmark are fully legal and recognized worldwide under international conventions, making them valid for residence permits, spousal visas, and registration in Spain and the EU.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 mb-2">Do we need to live or reside in Denmark?</h3>
+          <p class="text-slate-600 text-sm">No residency or citizenship in Denmark is required. International couples from all over the world choose Denmark due to its open, transparent, and fast administrative legal framework.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 mb-2">How long does the entire process take?</h3>
+          <p class="text-slate-600 text-sm">Approval from the Agency of Family Law typically takes about 5-7 working days once correct documents are submitted. Ceremonies can usually be scheduled shortly after approval.</p>
+        </div>
+      </div>
     </div>
   </section>
 
 </Layout>
-
-<style>
-  .hero { text-align: center; padding: 4rem 1rem; max-width: 800px; margin: 0 auto; }
-  .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2; }
-  .hero h2 { font-size: 1.2rem; color: #555; margin-bottom: 2rem; font-weight: normal; }
-  .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
-  .btn-secondary { background: #e5e7eb; color: #1f2937; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
-  
-  section { margin: 4rem 0; }
-  section h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
-  
-  .grid, .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-  .card, .service-card { background: #f9fafb; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5e7eb; }
-  
-  .faq-item { margin-bottom: 1.5rem; background: #f9fafb; padding: 1.25rem; border-radius: 8px; }
-  .faq-item h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
-</style>
