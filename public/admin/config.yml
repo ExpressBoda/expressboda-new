@@ -9,9 +9,6 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  # ... (дальше ваши переводы)
-
-collections:
   - name: "translations"
     label: "Interface Translations"
     files:
