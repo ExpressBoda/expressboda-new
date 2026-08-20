@@ -1,4 +1,14 @@
----
-// Автоматический редирект с корня сайта на английскую версию
-return Astro.redirect('/en/');
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=/en/">
+    <title>Redirecting...</title>
+    <script>
+      window.location.href = '/en/';
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/en/">/en/</a>...</p>
+  </body>
+</html>
