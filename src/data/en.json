@@ -5,5 +5,16 @@
   "nav.pricing": "Pricing",
   "nav.about": "About",
   "nav.contact": "Contact",
-  "cta.main": "Get Started"
+  "cta.main": "Check chances",
+  "hero": {
+    "title": "Legal Marriage in Denmark for International Couples — Zero Bureaucracy",
+    "subtitle": "Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization for residency in Spain and the EU.",
+    "secondary_cta": "View Service Packages"
+  },
+  "trust_banner": {
+    "item1": { "title": "Since 2020", "subtitle": "Years of proven expertise" },
+    "item2": { "title": "99.4% Success", "subtitle": "First-try AFL approval rate" },
+    "item3": { "title": "From €495", "subtitle": "Transparent pricing plans" },
+    "item4": { "title": "Fast-Track", "subtitle": "Direct agency submission" }
+  }
 }

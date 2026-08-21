@@ -10,12 +10,13 @@ public_folder: "/uploads"
 
 collections:
   - name: "translations"
-    label: "Interface Translations"
+    label: "Interface & Homepage Content"
     files:
       - file: "src/data/en.json"
         label: "English (EN)"
         name: "en_trans"
         fields:
+          # Меню и кнопки
           - {label: "Home", name: "nav.home", widget: "string"}
           - {label: "Services", name: "nav.services", widget: "string"}
           - {label: "Guide", name: "nav.guide", widget: "string"}
@@ -23,6 +24,45 @@ collections:
           - {label: "About", name: "nav.about", widget: "string"}
           - {label: "Contact", name: "nav.contact", widget: "string"}
           - {label: "Main CTA Button", name: "cta.main", widget: "string"}
+
+          # Главный экран (Hero)
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Main Title (H1)", name: "title", widget: "string"}
+              - {label: "Subtitle Description", name: "subtitle", widget: "text"}
+              - {label: "Secondary Button Text", name: "secondary_cta", widget: "string"}
+
+          # Лента доверия под первым экраном (Trust Banner)
+          - label: "Trust Banner Items"
+            name: "trust_banner"
+            widget: "object"
+            fields:
+              - label: "Item 1 (Experience)"
+                name: "item1"
+                widget: "object"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - label: "Item 2 (Success Rate)"
+                name: "item2"
+                widget: "object"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - label: "Item 3 (Pricing)"
+                name: "item3"
+                widget: "object"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - label: "Item 4 (Speed)"
+                name: "item4"
+                widget: "object"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Subtitle", name: "subtitle", widget: "string"}
 
       - file: "src/data/de.json"
         label: "Deutsch (DE)"
@@ -35,6 +75,13 @@ collections:
           - {label: "Über uns", name: "nav.about", widget: "string"}
           - {label: "Kontakt", name: "nav.contact", widget: "string"}
           - {label: "CTA Button", name: "cta.main", widget: "string"}
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Haupttitel (H1)", name: "title", widget: "string"}
+              - {label: "Untertitel", name: "subtitle", widget: "text"}
+              - {label: "Sekundäre Schaltfläche", name: "secondary_cta", widget: "string"}
 
       - file: "src/data/es.json"
         label: "Español (ES)"
@@ -47,6 +94,13 @@ collections:
           - {label: "Nosotros", name: "nav.about", widget: "string"}
           - {label: "Contacto", name: "nav.contact", widget: "string"}
           - {label: "Botón Principal", name: "cta.main", widget: "string"}
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Título Principal (H1)", name: "title", widget: "string"}
+              - {label: "Subtítulo", name: "subtitle", widget: "text"}
+              - {label: "Botón Secundario", name: "secondary_cta", widget: "string"}
 
       - file: "src/data/ru.json"
         label: "Русский (RU)"
@@ -59,3 +113,10 @@ collections:
           - {label: "О нас", name: "nav.about", widget: "string"}
           - {label: "Контакты", name: "nav.contact", widget: "string"}
           - {label: "Кнопка Начать", name: "cta.main", widget: "string"}
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Главный заголовок (H1)", name: "title", widget: "string"}
+              - {label: "Подзаголовок", name: "subtitle", widget: "text"}
+              - {label: "Вторичная кнопка", name: "secondary_cta", widget: "string"}

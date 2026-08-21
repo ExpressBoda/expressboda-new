@@ -1,7 +1,7 @@
 ---
-// src/pages/en/index.astro
 import Layout from '../../layouts/BaseLayout.astro';
 import Quiz from '../../components/Quiz.astro';
+import content from '../../data/en.json';
 
 const lang = 'en';
 ---
@@ -16,10 +16,7 @@ const lang = 'en';
   <section class="bg-gradient-to-b from-slate-100 to-[#FAFAFC] pt-14 pb-10 px-6 border-b border-slate-200">
     <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
       
-      <!-- Left Column: Value Proposition -->
       <div class="md:col-span-7 space-y-6">
-        
-        <!-- Активный виджет Trustpilot -->
         <div class="max-w-[260px]">
           <div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="64706bc1a10721677e3d43e9" data-style-height="50px" data-style-width="100%" data-theme="light" data-min-review-count="10" data-style-alignment="left">
             <a href="https://www.trustpilot.com/review/expressboda.com" target="_blank" rel="noopener">Trustpilot</a>
@@ -28,14 +25,13 @@ const lang = 'en';
         </div>
 
         <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
-          Legal Marriage in Denmark for International Couples — Zero Bureaucracy
+          {content.hero.title}
         </h1>
 
         <p class="text-slate-600 text-base leading-relaxed">
-          Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization for residency in Spain and the EU.
+          {content.hero.subtitle}
         </p>
 
-        <!-- Список преимуществ / закрытие возражений -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-sm text-slate-700 font-medium">
           <div class="flex items-center gap-2">
             <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
@@ -55,10 +51,9 @@ const lang = 'en';
           </div>
         </div>
 
-        <!-- Secondary CTA & Microcopy -->
         <div class="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl transition shadow-md">
-            View Service Packages
+            {content.hero.secondary_cta}
           </a>
           <span class="text-xs text-slate-500">
             ⚡ Or take a 2-min case check via the quiz on the right
@@ -66,56 +61,47 @@ const lang = 'en';
         </div>
       </div>
 
-      <!-- Right Column: Interactive Quiz Component -->
       <div id="checker" class="md:col-span-5 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
         <Quiz />
       </div>
-
     </div>
   </section>
 
-
-  <!-- 1.1 HERO BOTTOM TRUST BANNER (Светлая и легкая лента) -->
+  <!-- 1.1 HERO BOTTOM TRUST BANNER -->
   <section class="bg-white text-slate-800 py-6 px-6 border-b border-slate-200">
     <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
-      
       <div class="flex items-center gap-4 justify-center md:justify-start">
         <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold shrink-0">🏛️</div>
         <div>
-          <div class="font-bold text-base text-slate-900">Since 2020</div>
-          <div class="text-xs text-slate-500">Years of proven expertise</div>
+          <div class="font-bold text-base text-slate-900">{content.trust_banner.item1.title}</div>
+          <div class="text-xs text-slate-500">{content.trust_banner.item1.subtitle}</div>
         </div>
       </div>
-
       <div class="flex items-center gap-4 justify-center md:justify-start">
         <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-bold shrink-0">📈</div>
         <div>
-          <div class="font-bold text-base text-slate-900">99.4% Success</div>
-          <div class="text-xs text-slate-500">First-try AFL approval rate</div>
+          <div class="font-bold text-base text-slate-900">{content.trust_banner.item2.title}</div>
+          <div class="text-xs text-slate-500">{content.trust_banner.item2.subtitle}</div>
         </div>
       </div>
-
       <div class="flex items-center gap-4 justify-center md:justify-start">
         <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg font-bold shrink-0">💶</div>
         <div>
-          <div class="font-bold text-base text-slate-900">From €495</div>
-          <div class="text-xs text-slate-500">Transparent pricing plans</div>
+          <div class="font-bold text-base text-slate-900">{content.trust_banner.item3.title}</div>
+          <div class="text-xs text-slate-500">{content.trust_banner.item3.subtitle}</div>
         </div>
       </div>
-
       <div class="flex items-center gap-4 justify-center md:justify-start">
         <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-bold shrink-0">⚡</div>
         <div>
-          <div class="font-bold text-base text-slate-900">Fast-Track</div>
-          <div class="text-xs text-slate-500">Direct agency submission</div>
+          <div class="font-bold text-base text-slate-900">{content.trust_banner.item4.title}</div>
+          <div class="text-xs text-slate-500">{content.trust_banner.item4.subtitle}</div>
         </div>
       </div>
-
     </div>
   </section>
 
-
-  <!-- 2. PAIN POINTS VS SOLUTIONS (Why Express Boda) -->
+  <!-- 2. PAIN POINTS VS SOLUTIONS -->
   <section class="py-16 px-6 max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">Why International Couples Choose ExpressBoda</h2>
@@ -123,11 +109,8 @@ const lang = 'en';
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
-      <!-- DIY Risk Box -->
       <div class="bg-red-50/50 border border-red-100 p-8 rounded-2xl">
-        <h3 class="text-red-700 font-bold text-lg mb-4 flex items-center gap-2">
-          ❌ DIY Application
-        </h3>
+        <h3 class="text-red-700 font-bold text-lg mb-4 flex items-center gap-2">❌ DIY Application</h3>
         <ul class="space-y-3 text-slate-700 text-sm">
           <li><strong>Risk of rejection:</strong> Small translation errors or missing paperwork can stall your case for months.</li>
           <li><strong>Loss of 2,300 DKK:</strong> The official AFL fee is non-refundable if your application is rejected.</li>
@@ -135,11 +118,8 @@ const lang = 'en';
         </ul>
       </div>
 
-      <!-- ExpressBoda Solution Box -->
       <div class="bg-emerald-50/50 border border-emerald-100 p-8 rounded-2xl">
-        <h3 class="text-emerald-700 font-bold text-lg mb-4 flex items-center gap-2">
-          ✅ Through ExpressBoda
-        </h3>
+        <h3 class="text-emerald-700 font-bold text-lg mb-4 flex items-center gap-2">✅ Through ExpressBoda</h3>
         <ul class="space-y-3 text-slate-700 text-sm">
           <li><strong>100% pre-audit:</strong> We thoroughly verify every scanned document before submission to AFL.</li>
           <li><strong>Time saved:</strong> Receive your marriage approval rapidly without revisions.</li>
@@ -149,8 +129,7 @@ const lang = 'en';
     </div>
   </section>
 
-
-  <!-- 3. SERVICES OVERVIEW (Commercial Grid) -->
+  <!-- 3. SERVICES OVERVIEW (Pricing Grid) -->
   <section id="services" class="bg-slate-50 py-16 px-6 border-t border-b border-slate-200">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-12">
@@ -159,7 +138,6 @@ const lang = 'en';
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Package 1 -->
         <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-xl text-slate-900 mb-2">Standard Package</h3>
@@ -171,16 +149,11 @@ const lang = 'en';
               <li>✓ Direct supervisor assistance</li>
             </ul>
           </div>
-          <a href="/en/services/standard" class="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition">
-            Select Package
-          </a>
+          <a href="/en/services/standard" class="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition">Select Package</a>
         </div>
 
-        <!-- Package 2 (Featured) -->
         <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-blue-600 flex flex-col justify-between relative">
-          <div class="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-            Most Popular
-          </div>
+          <div class="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</div>
           <div>
             <h3 class="font-bold text-xl text-slate-900 mb-2">Full-Cycle & Apostille</h3>
             <p class="text-slate-500 text-sm mb-6">End-to-end service including legalization for international use.</p>
@@ -191,12 +164,9 @@ const lang = 'en';
               <li>✓ Dedicated manager on WhatsApp</li>
             </ul>
           </div>
-          <a href="/en/services/full-cycle" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition">
-            Select Package
-          </a>
+          <a href="/en/services/full-cycle" class="block text-center bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition">Select Package</a>
         </div>
 
-        <!-- Package 3 -->
         <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
           <div>
             <h3 class="font-bold text-xl text-slate-900 mb-2">Express & VIP</h3>
@@ -208,14 +178,11 @@ const lang = 'en';
               <li>✓ Full legal backing & guarantees</li>
             </ul>
           </div>
-          <a href="/en/services/vip" class="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition">
-            Select Package
-          </a>
+          <a href="/en/services/vip" class="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-medium transition">Select Package</a>
         </div>
       </div>
     </div>
   </section>
-
 
   <!-- 4. STEP-BY-STEP PROCESS -->
   <section class="py-16 px-6 max-w-5xl mx-auto">
@@ -248,8 +215,7 @@ const lang = 'en';
     </div>
   </section>
 
-
-  <!-- 5. SEO / EXPERT CONTENT & FAQ -->
+  <!-- 5. FAQ -->
   <section class="bg-slate-50 py-16 px-6 border-t border-slate-200">
     <div class="max-w-4xl mx-auto">
       <h2 class="font-serif text-3xl font-bold text-slate-900 text-center mb-10">Frequently Asked Questions</h2>
