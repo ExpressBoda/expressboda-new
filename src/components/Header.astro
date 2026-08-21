@@ -2,7 +2,7 @@
 // Header.astro
 ---
 
-<!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ -->
+<!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ (сохранена для десктопа) -->
 <div class="top-bar">
   <div class="top-bar-container">
     <div class="lang-switcher">
@@ -30,9 +30,25 @@
       Express<span>Boda</span>
     </a>
     
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+    <!-- Анимированная кнопка-бургер -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <nav id="navMenu">
+      <!-- Блок выбора языков (виден ТОЛЬКО в мобильном меню сверху) -->
+      <div class="mobile-lang-switcher">
+        <span class="lang-title">Language</span>
+        <div class="lang-options">
+          <a href="/en/" class="lang-pill active">ENG</a>
+          <a href="/de/" class="lang-pill">DEU</a>
+          <a href="/es/" class="lang-pill">ESP</a>
+          <a href="/ru/" class="lang-pill">RUS</a>
+        </div>
+      </div>
+
       <a href="#compare" class="nav-link">Why us?</a>
       <a href="#services" class="nav-link">Services & Apostille</a>
       <a href="#pricing" class="nav-link">Pricing</a>
@@ -59,7 +75,7 @@
     --whatsapp: #25D366;
   }
 
-  /* Верхняя панель */
+  /* Верхняя панель (десктоп) */
   .top-bar { background: #0F172A; color: #CBD5E1; font-size: 13px; padding: 8px 24px; border-bottom: 1px solid #1E293B; }
   .top-bar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
   
@@ -68,14 +84,11 @@
   .lang-switcher a.active, .lang-switcher a:hover { color: #FFF; }
 
   .top-bar-right { display: flex; align-items: center; gap: 14px; }
-  
   .top-bar-phones { display: flex; gap: 8px; align-items: center; }
   .top-bar-phones a { color: #F8FAFC; text-decoration: none; font-weight: 600; font-size: 13px; transition: color 0.2s; }
   .top-bar-phones a:hover { color: var(--accent); }
-  
   .top-bar-email { color: #CBD5E1; text-decoration: none; transition: color 0.2s; }
   .top-bar-email:hover { color: #FFF; }
-  
   .phone-divider { color: #475569; }
 
   /* Основная шапка */
@@ -94,10 +107,24 @@
 
   .btn-whatsapp-header { background: var(--whatsapp); color: #fff; padding: 9px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; }
 
-  .menu-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 26px; color: var(--primary); }
+  /* Стили кнопки-бургера */
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 24px; position: relative; padding: 0; z-index: 101; }
+  .menu-toggle span { display: block; position: absolute; height: 3px; width: 100%; background: var(--primary); border-radius: 2px; opacity: 1; left: 0; transition: 0.25s ease-in-out; }
+  .menu-toggle span:nth-child(1) { top: 0px; }
+  .menu-toggle span:nth-child(2) { top: 10px; }
+  .menu-toggle span:nth-child(3) { top: 20px; }
+
+  /* Анимация превращения бургера в крестик (когда добавлен класс active) */
+  .menu-toggle.active span:nth-child(1) { top: 10px; transform: rotate(135deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+  .menu-toggle.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
+
+  .mobile-lang-switcher { display: none; }
 
   @media (max-width: 900px) {
+    .top-bar { display: none; }
     .menu-toggle { display: block; }
+    
     nav { 
       display: none; 
       position: absolute; 
@@ -113,9 +140,15 @@
       gap: 16px;
     }
     nav.active { display: flex; }
-    nav a.nav-link { font-size: 16px; padding: 8px 0; border-bottom: 1px solid #F1F5F9; }
+
+    .mobile-lang-switcher { display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid #F1F5F9; }
+    .lang-title { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
+    .lang-options { display: flex; gap: 8px; }
+    .lang-pill { flex: 1; text-align: center; padding: 8px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--text-main); background: #F1F5F9; border-radius: 6px; border: 1px solid var(--border); }
+    .lang-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    nav a.nav-link { font-size: 16px; padding: 4px 0; }
     .btn-whatsapp-header { justify-content: center; padding: 12px; }
-    .top-bar-right { display: none; }
   }
 </style>
 
@@ -125,11 +158,14 @@
 
   menuToggle?.addEventListener('click', () => {
     navMenu?.classList.toggle('active');
+    menuToggle?.classList.toggle('active'); // Активирует анимацию крестика
   });
 
+  // Закрывать меню при клике на любую ссылку внутри него
   document.querySelectorAll('#navMenu a').forEach(link => {
     link.addEventListener('click', () => {
       navMenu?.classList.remove('active');
+      menuToggle?.classList.remove('active'); // Возвращает крестик обратно в бургер
     });
   });
 </script>
