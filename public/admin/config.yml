@@ -1,7 +1,15 @@
+backend:
+  name: github
+  repo: ExpressBoda/expressboda-new
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
 collections:
   - name: "pages"
-  - label: "Pages"
-  - files:
+    label: "Pages"
+    files:
       - file: "src/data/en.json"
         label: "Home Page (English)"
         name: "home_en"
@@ -25,7 +33,31 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Subtitle", name: "subtitle", widget: "string" }
-              # (Аналогично для item2, item3, item4)
+              - label: "Item 2"
+                name: "item2"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - label: "Item 3"
+                name: "item3"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - label: "Item 4"
+                name: "item4"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+          - label: "Pain Points Section"
+            name: "pain_points"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
 
           - label: "Pricing Section"
             name: "pricing"
@@ -33,3 +65,16 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+          - label: "Steps Section"
+            name: "steps"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+
+          - label: "FAQ Section"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
