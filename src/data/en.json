@@ -1,20 +1,34 @@
 {
-  "nav.home": "Home",
-  "nav.services": "Services",
-  "nav.guide": "Guide",
-  "nav.pricing": "Pricing",
-  "nav.about": "About",
-  "nav.contact": "Contact",
-  "cta.main": "Check chances",
   "hero": {
-    "title": "Legal Marriage in Denmark for International Couples — Zero Bureaucracy",
-    "subtitle": "Hassle-free marriage in Denmark for international couples. Avoid complex bureaucratic hurdles in Germany and other European countries. Expert AFL paperwork handling, full guidance, and guaranteed legal recognition.",
-    "secondary_cta": "View Service Packages"
+    "title": "Fast & Legal Marriage in Denmark for International Couples",
+    "subtitle": "Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization.",
+    "secondary_cta": "Explore Packages",
+    "perks": [
+      "No residency required in Denmark",
+      "Valid for EU Spousal Visas & Residencia",
+      "Apostille & Legalization included",
+      "Full legal contract & guarantees"
+    ]
   },
   "trust_banner": {
-    "item1": { "title": "Since 2020", "subtitle": "Years of proven expertise" },
-    "item2": { "title": "99.4% Success", "subtitle": "First-try AFL approval rate" },
-    "item3": { "title": "From €495", "subtitle": "Transparent pricing plans" },
-    "item4": { "title": "Fast-Track", "subtitle": "Direct agency submission" }
+    "item1": { "title": "AFL Direct", "subtitle": "Official agency submission" },
+    "item2": { "title": "100%", "subtitle": "Pre-audit verification" },
+    "item3": { "title": "No Hidden Fees", "subtitle": "Transparent pricing" },
+    "item4": { "title": "Fast Track", "subtitle": "5-7 days approval" }
+  },
+  "pain_points": {
+    "title": "Why International Couples Choose ExpressBoda",
+    "subtitle": "Compare DIY application risks with professional agency handling"
+  },
+  "pricing": {
+    "title": "Transparent Pricing Packages",
+    "subtitle": "No hidden fees. Choose the level of support you need."
+  },
+  "steps": {
+    "title": "How Your Marriage in Denmark Works",
+    "subtitle": "A clear 4-step roadmap from start to your official certificate"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
   }
 }

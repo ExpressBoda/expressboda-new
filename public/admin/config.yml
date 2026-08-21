@@ -1,19 +1,35 @@
-backend:
-  name: github
-  repo: ExpressBoda/expressboda-new
-  branch: main
-  client_id: Ov23liSILrMbKqJxvme
-
-media_folder: "public/uploads"
-public_folder: "/uploads"
-
 collections:
-  - name: "translations"
-    label: "Interface & Homepage Content"
-    files:
+  - name: "pages"
+  - label: "Pages"
+  - files:
       - file: "src/data/en.json"
-        label: "English (EN)"
-        name: "en_trans"
+        label: "Home Page (English)"
+        name: "home_en"
         fields:
-          - {label: "Home", name: "nav.home", widget: "string"}
-          # ... (остальные ваши поля продолжаются здесь)
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Secondary CTA Button", name: "secondary_cta", widget: "string" }
+              - { label: "Perks List", name: "perks", widget: "list" }
+
+          - label: "Trust Banner"
+            name: "trust_banner"
+            widget: "object"
+            fields:
+              - label: "Item 1"
+                name: "item1"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+              # (Аналогично для item2, item3, item4)
+
+          - label: "Pricing Section"
+            name: "pricing"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
