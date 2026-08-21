@@ -20,6 +20,8 @@ const { title, description, lang } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <SEO title={title} description={description} lang={lang} />
+    <!-- СКРИПТ АВТОРИЗАЦИИ NETLIFY IDENTITY -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
     <Header lang={lang} />
@@ -27,5 +29,18 @@ const { title, description, lang } = Astro.props;
       <slot />
     </main>
     <Footer lang={lang} />
+
+    <!-- Скрипт для корректного перенаправления после подтверждения почты/входа -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.reload();
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

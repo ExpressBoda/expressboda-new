@@ -1,14 +1,12 @@
 backend:
-  name: github
-  repo: ExpressBoda/expressboda-new
+  name: git-gateway
   branch: main
-  base_url: https://expressboda-new.vercel.app
-  auth_endpoint: api/auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
+  # ... дальше ваши коллекции остаются без изменений ...
   - name: "translations"
     label: "Interface & Homepage Content"
     files:
