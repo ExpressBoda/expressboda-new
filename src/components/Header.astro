@@ -30,7 +30,12 @@
       Express<span>Boda</span>
     </a>
     
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+    <!-- Анимированная кнопка-бургер -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <nav id="navMenu">
       <!-- Блок выбора языков (виден ТОЛЬКО в мобильном меню сверху) -->
@@ -102,7 +107,17 @@
 
   .btn-whatsapp-header { background: var(--whatsapp); color: #fff; padding: 9px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; }
 
-  .menu-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 26px; color: var(--primary); }
+  /* Стили и анимация кнопки-бургера */
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 24px; position: relative; padding: 0; z-index: 101; }
+  .menu-toggle span { display: block; position: absolute; height: 3px; width: 100%; background: var(--primary); border-radius: 2px; opacity: 1; left: 0; transition: 0.25s ease-in-out; }
+  .menu-toggle span:nth-child(1) { top: 0px; }
+  .menu-toggle span:nth-child(2) { top: 10px; }
+  .menu-toggle span:nth-child(3) { top: 20px; }
+
+  /* Переход бургера в крестик при активном классе */
+  .menu-toggle.active span:nth-child(1) { top: 10px; transform: rotate(135deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+  .menu-toggle.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
 
   /* На десктопе языки в мобильном меню скрыты */
   .mobile-lang-switcher { display: none; }
@@ -146,11 +161,14 @@
 
   menuToggle?.addEventListener('click', () => {
     navMenu?.classList.toggle('active');
+    menuToggle?.classList.toggle('active'); // Запускает анимацию крестика
   });
 
+  // Автоматически закрывать меню и возвращать бургер при клике на ссылки
   document.querySelectorAll('#navMenu a').forEach(link => {
     link.addEventListener('click', () => {
       navMenu?.classList.remove('active');
+      menuToggle?.classList.remove('active');
     });
   });
 </script>
