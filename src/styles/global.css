@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 /*
-  Шрифты — Open Sans (текст) + Playfair Display (заголовки), как в брендинге текущего сайта.
-  Самохостинг: положи .woff2 файлы в /public/fonts/ и раскомментируй.
-  Это быстрее и надёжнее для PageSpeed, чем запрос к fonts.googleapis.com.
+  Шрифты — Open Sans (текст) + Playfair Display (заголовки).
 */
 /*
 @font-face {
@@ -28,7 +26,7 @@ html {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* --- Добавленные стили для квиза и элементов интерфейса --- */
+/* --- Стили для квиза и элементов интерфейса --- */
 :root {
   --accent: #0B53FB;
   --accent-hover: #003ECC;
