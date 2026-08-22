@@ -2,83 +2,105 @@
 // Header.astro
 ---
 
-<!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ -->
-<div class="top-bar">
-  <div class="top-bar-container">
-    <div class="lang-switcher">
-      <a href="/en/" class="active">ENG</a>
-      <a href="/de/">DEU</a>
-      <a href="/es/">ESP</a>
-      <a href="/ru/">RUS</a>
-    </div>
-    <div class="top-bar-right">
-      <div class="top-bar-phones">
-        <a href="tel:+491744019766">📞 +49 174 4019766</a>
-        <span class="phone-divider">|</span>
-        <a href="tel:+34611592877">📞 +34 611 592877</a>
+<div class="site-header-wrapper">
+  <!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="lang-switcher">
+        <a href="/en/" class="active">ENG</a>
+        <a href="/de/">DEU</a>
+        <a href="/es/">ESP</a>
+        <a href="/ru/">RUS</a>
       </div>
-      <span class="phone-divider">•</span>
-      <a href="mailto:info@expressboda.com" class="top-bar-email">info@expressboda.com</a>
+      <div class="top-bar-right">
+        <div class="top-bar-phones">
+          <a href="tel:+491744019766">📞 +49 174 4019766</a>
+          <span class="phone-divider">|</span>
+          <a href="tel:+34611592877">📞 +34 611 592877</a>
+        </div>
+        <span class="phone-divider">•</span>
+        <a href="mailto:info@expressboda.com" class="top-bar-email">info@expressboda.com</a>
+      </div>
     </div>
   </div>
+
+  <!-- ОСНОВНАЯ ШАПКА -->
+  <header>
+    <div class="header-container">
+      <!-- Мобильная кнопка WhatsApp слева -->
+      <a href="https://wa.me/491754019766" target="_blank" class="mobile-header-whatsapp" aria-label="WhatsApp Chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+      </a>
+
+      <!-- Логотип -->
+      <a href="/" class="logo">
+        <span class="logo-desktop">
+          <svg class="logo-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path>
+          </svg>
+          ExpressBoda
+        </span>
+        <!-- Мобильная версия: Express (черный) + Boda (синий) по центру -->
+        <span class="logo-mobile">
+          Express<span class="logo-boda">Boda</span>
+        </span>
+      </a>
+
+      <!-- Кнопка-бургер -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="navMenu">
+        <div class="mobile-lang-switcher">
+          <span class="lang-title">Language</span>
+          <div class="lang-options">
+            <a href="/en/" class="lang-pill active">ENG</a>
+            <a href="/de/" class="lang-pill">DEU</a>
+            <a href="/es/" class="lang-pill">ESP</a>
+            <a href="/ru/" class="lang-pill">RUS</a>
+          </div>
+        </div>
+
+        <a href="/documents/" class="nav-link">Documents</a>
+        <a href="/pricing/" class="nav-link">Pricing</a>
+        <a href="/apostille/" class="nav-link">Apostille</a>
+        <a href="/guides/" class="nav-link">Guides</a>
+        <a href="/faq/" class="nav-link">FAQ</a>
+        <a href="/contacts/" class="nav-link">Contacts</a>
+        
+        <a href="https://wa.me/491754019766" target="_blank" class="btn-whatsapp-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+          WhatsApp
+        </a>
+        
+        <a href="#express-boda-quiz" class="btn-primary">Check chances</a>
+
+        <div class="mobile-contacts">
+          <a href="tel:+491744019766">📞 +49 174 4019766</a>
+          <a href="tel:+34611592877">📞 +34 611 592877</a>
+          <a href="mailto:info@expressboda.com">✉️ info@expressboda.com</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 </div>
 
-<!-- ОСНОВНАЯ ШАПКА -->
-<header>
-  <div class="header-container">
-    <!-- Логотип -->
-    <a href="/" class="logo">
-      <svg class="logo-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path>
-      </svg>
-      <span>ExpressBoda</span>
+<!-- Нижняя липкая панель для мобильных -->
+<div class="mobile-sticky-footer">
+  <div class="sticky-footer-content">
+    <div class="sticky-footer-text">
+      <span class="sticky-title">Plan your wedding in Denmark</span>
+      <span class="sticky-subtitle">Fast & official registration</span>
+    </div>
+    <a href="#express-boda-quiz" class="sticky-cta-btn">
+      Check chances
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
     </a>
-    
-    <!-- Анимированная кнопка-бургер -->
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav id="navMenu">
-      <!-- Блок выбора языков (виден ТОЛЬКО в мобильном меню сверху) -->
-      <div class="mobile-lang-switcher">
-        <span class="lang-title">Language</span>
-        <div class="lang-options">
-          <a href="/en/" class="lang-pill active">ENG</a>
-          <a href="/de/" class="lang-pill">DEU</a>
-          <a href="/es/" class="lang-pill">ESP</a>
-          <a href="/ru/" class="lang-pill">RUS</a>
-        </div>
-      </div>
-
-      <!-- Ссылки структуры -->
-      <a href="/documents/" class="nav-link">Documents</a>
-      <a href="/pricing/" class="nav-link">Pricing</a>
-      <a href="/apostille/" class="nav-link">Apostille</a>
-      <a href="/guides/" class="nav-link">Guides</a>
-      <a href="/faq/" class="nav-link">FAQ</a>
-      <a href="/contacts/" class="nav-link">Contacts</a>
-      
-      <!-- Вторичная кнопка WhatsApp -->
-      <a href="https://wa.me/491754019766" target="_blank" class="btn-whatsapp-header">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-        WhatsApp
-      </a>
-      
-      <!-- Главная кнопка действия -->
-      <a href="/#checker" class="btn-primary">Check chances</a>
-
-      <!-- Контакты для мобильного меню -->
-      <div class="mobile-contacts">
-        <a href="tel:+491744019766">📞 +49 174 4019766</a>
-        <a href="tel:+34611592877">📞 +34 611 592877</a>
-        <a href="mailto:info@expressboda.com">✉️ info@expressboda.com</a>
-      </div>
-    </nav>
   </div>
 </div>
 
@@ -94,7 +116,14 @@
     --whatsapp-bg: #ECFDF5;
   }
 
-  /* Исправление: теперь фон тянется на всю ширину, а сам бар ведет себя как контейнер с паддингами */
+  /* Шапка прилипает целиком на десктопе */
+  .site-header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+  }
+
   .top-bar { 
     background: #0F172A; 
     color: #CBD5E1; 
@@ -102,11 +131,10 @@
     border-bottom: 1px solid #1E293B; 
   }
   
-  /* Контейнеры верхнего бара и хедера теперь имеют абсолютно одинаковые свойства */
   .top-bar-container, .header-container { 
     max-width: 1200px; 
     margin: 0 auto; 
-    padding: 12px 24px; /* Задаем единый вертикальный и горизонтальный отступ */
+    padding: 12px 24px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -130,27 +158,33 @@
   .top-bar-email:hover { color: #FFF; }
   .phone-divider { color: #475569; }
 
-  header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.03); width: 100%; }
+  header { 
+    background: #ffffff; 
+    border-bottom: 1px solid var(--border); 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03); 
+    width: 100%; 
+  }
   
+  .logo-mobile { display: none; }
+  .logo-desktop { display: flex; align-items: flex-start; gap: 0px; }
+
   .logo { 
-    font-family: 'Playfair Display', Georgia, serif; 
-    font-size: 24px; 
-    font-weight: 700;
+    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif; 
+    font-size: 26px; 
+    font-weight: 800; 
     color: var(--primary); 
     text-decoration: none; 
     letter-spacing: -0.5px; 
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
     transition: opacity 0.2s;
+    line-height: 1;
   }
-  .logo:hover {
-    opacity: 0.9;
-  }
+  .logo:hover { opacity: 0.9; }
   .logo-icon { 
     color: var(--accent); 
-    width: 22px; 
-    height: 22px; 
+    width: 17px; 
+    height: 17px; 
+    position: relative;
+    top: -2px; 
     flex-shrink: 0; 
   }
   
@@ -164,6 +198,10 @@
   .btn-whatsapp-header { background: var(--whatsapp-bg); color: var(--whatsapp); border: 1px solid rgba(16, 185, 129, 0.3); padding: 9px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
   .btn-whatsapp-header:hover { background: var(--whatsapp); color: #fff; border-color: var(--whatsapp); }
 
+  .mobile-header-whatsapp { display: none; }
+  .mobile-lang-switcher, .mobile-contacts { display: none; }
+  .mobile-sticky-footer { display: none; }
+
   .menu-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 24px; position: relative; padding: 0; z-index: 101; }
   .menu-toggle span { display: block; position: absolute; height: 3px; width: 100%; background: var(--primary); border-radius: 2px; opacity: 1; left: 0; transition: 0.25s ease-in-out; }
   .menu-toggle span:nth-child(1) { top: 0px; }
@@ -174,19 +212,50 @@
   .menu-toggle.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
   .menu-toggle.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
 
-  .mobile-lang-switcher, .mobile-contacts { display: none; }
-
   @media (max-width: 1024px) {
-    .logo { 
-      font-size: 28px; 
+    .top-bar { display: none; }
+    
+    .logo-desktop { display: none; }
+    .logo-mobile { 
+      display: inline-block;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      color: var(--primary);
     }
-    .logo-icon {
-      width: 26px;
-      height: 26px;
+    .logo-boda {
+      color: var(--accent); /* Синий цвет для Boda */
     }
 
-    .top-bar { display: none; }
-    .menu-toggle { display: block; }
+    .header-container { 
+      display: grid;
+      grid-template-columns: 36px 1fr 30px;
+      align-items: center;
+      padding: 14px 20px; 
+    }
+    
+    .mobile-header-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--whatsapp);
+      background: var(--whatsapp-bg);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      justify-self: start;
+    }
+
+    .logo { 
+      justify-self: center; 
+      text-align: center;
+    }
+
+    .menu-toggle { 
+      display: block; 
+      justify-self: end; 
+    }
+
     nav { 
       display: none; 
       position: absolute; 
@@ -228,11 +297,72 @@
     .mobile-contacts a {
       color: var(--text-main);
       text-decoration: none;
-      transition: color 0.2s;
     }
-    .mobile-contacts a:hover {
-      color: var(--accent);
+
+    /* Мобильный липкий футер внизу */
+    .mobile-sticky-footer {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+      z-index: 99;
+      padding: 10px 16px;
+      animation: slideUp 0.3s ease-out;
     }
+
+    .sticky-footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .sticky-footer-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sticky-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .sticky-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .sticky-cta-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .sticky-cta-btn:hover {
+      background: var(--accent-hover);
+    }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
   }
 </style>
 
