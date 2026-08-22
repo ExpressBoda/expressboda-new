@@ -138,7 +138,7 @@
       <h3 class="font-serif text-xl font-bold text-slate-900 mb-4">Relationship Details</h3>
       
       <div class="space-y-4 mb-6 text-sm text-slate-700">
-        <!-- Вопрос о сожительстве (только если один ЕС + другой с Residence Permit, либо оба с Residence Permit) -->
+        <!-- Вопрос о сожительстве -->
         <div id="cohabitation-question" class="hidden">
           <label class="block font-semibold mb-1">Do you live together for more than 6 months?</label>
           <select id="cohabit" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-slate-800">
@@ -222,6 +222,10 @@
 </div>
 
 <script>
+  // Определяем язык текущей страницы (из тега html lang или по первому сегменту URL)
+  const pathSegments = window.location.pathname.split('/');
+  const detectedLang = ['es', 'ru', 'en'].includes(pathSegments[1]) ? pathSegments[1] : (document.documentElement.lang || 'en');
+
   let quizData = {
     p1: '',
     p2: '',
@@ -232,9 +236,11 @@
     cohabit: 'no',
     children: 'no',
     duration: 'less-6',
-    proofs: 'yes'
+    proofs: 'yes',
+    language: detectedLang // Сохраняем язык отправки
   };
 
+  let currentResultType = 'success';
   const todayStr = new Date().toISOString().split('T')[0];
 
   window.handleStep1Next = function() {
@@ -328,8 +334,6 @@
       return;
     }
 
-    // Условие отображения вопроса о сожительстве:
-    // Задается ТОЛЬКО если (Один ЕС + Другой с Residence Permit) ИЛИ (Оба с Residence Permit)
     const showCohabitation = (
       (quizData.p1 === 'eu' && quizData.p2Subtype === 'residence') ||
       (quizData.p2 === 'eu' && quizData.p1Subtype === 'residence') ||
@@ -356,9 +360,6 @@
     quizData.duration = document.getElementById('duration').value;
     quizData.proofs = document.getElementById('proofs').value;
 
-    // Проверка условий для высоких шансов:
-    // живут вместе (>6 месяцев или если вопрос скрыт, но есть дети + отношения > 1 года/3 лет),
-    // имеют детей ('yes') и отношения дольше 6 мес / 1 года / 3 лет.
     const isCohabitYes = document.getElementById('cohabitation-question').classList.contains('hidden') || quizData.cohabit === 'yes';
     const hasLongRelationship = (quizData.duration === '1-3' || quizData.duration === 'more-3' || quizData.duration === '6-12');
 
@@ -374,6 +375,7 @@
   };
 
   function prepareFinalScreen(type) {
+    currentResultType = type;
     const icon = document.getElementById('result-icon');
     const heading = document.getElementById('result-heading');
     const summary = document.getElementById('result-summary-text');
@@ -403,7 +405,7 @@
     }
   }
 
-  window.sendLeadData = function() {
+  window.sendLeadData = async function() {
     const email = document.getElementById('lead-email').value;
     const phone = document.getElementById('lead-phone').value;
 
@@ -412,6 +414,55 @@
       return;
     }
 
-    alert('Thank you! Your quiz has been successfully completed and your personal action plan is on its way to your email.');
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlmxtTjxzC_MMD5RdKqtRxhs_ogpQEIELo4cYK2kMgMN-5aUGb-z6FBLrulGJLfYjDcw/exec';
+
+    const payload = {
+      email: email,
+      phone: phone,
+      quizAnswers: quizData,
+      resultType: currentResultType
+    };
+
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      alert('Thank you! Your details have been submitted successfully. We will contact you shortly with your personalized proposal.');
+      
+      // Сбрасываем форму и возвращаем квиз на 1-й шаг
+      document.getElementById('quiz-form').reset();
+      quizData = {
+        p1: '',
+        p2: '',
+        p1Subtype: '',
+        p2Subtype: '',
+        p1Marital: 'single',
+        p2Marital: 'single',
+        cohabit: 'no',
+        children: 'no',
+        duration: 'less-6',
+        proofs: 'yes',
+        language: detectedLang
+      };
+      nextStep(1);
+      
+    } catch (error) {
+      console.error('Error submitting lead:', error);
+      alert('Something went wrong. Please try again or contact us via WhatsApp directly.');
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
   };
 </script>

@@ -26,13 +26,14 @@
 <!-- ОСНОВНАЯ ШАПКА -->
 <header>
   <div class="header-container">
+    <!-- Логотип -->
     <a href="/" class="logo">
-      <svg class="logo-globe" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="logo-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="2" y1="12" x2="22" y2="12"></line>
         <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path>
       </svg>
-      <span class="logo-express">Express</span><span class="logo-boda">Boda</span>
+      <span>ExpressBoda</span>
     </a>
     
     <!-- Анимированная кнопка-бургер -->
@@ -79,7 +80,7 @@
       </div>
     </nav>
   </div>
-</header>
+</div>
 
 <style>
   :root {
@@ -93,9 +94,29 @@
     --whatsapp-bg: #ECFDF5;
   }
 
-  /* Строго одинаковые контейнеры с одинаковыми отступы по бокам (24px) */
-  .top-bar { background: #0F172A; color: #CBD5E1; font-size: 13px; padding: 8px 24px; border-bottom: 1px solid #1E293B; }
-  .top-bar-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  /* Исправление: теперь фон тянется на всю ширину, а сам бар ведет себя как контейнер с паддингами */
+  .top-bar { 
+    background: #0F172A; 
+    color: #CBD5E1; 
+    font-size: 13px; 
+    border-bottom: 1px solid #1E293B; 
+  }
+  
+  /* Контейнеры верхнего бара и хедера теперь имеют абсолютно одинаковые свойства */
+  .top-bar-container, .header-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 12px 24px; /* Задаем единый вертикальный и горизонтальный отступ */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+  }
+
+  .top-bar-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
   
   .lang-switcher { display: flex; gap: 12px; }
   .lang-switcher a { color: #94A3B8; text-decoration: none; font-weight: 600; text-transform: uppercase; transition: color 0.2s; }
@@ -109,15 +130,29 @@
   .top-bar-email:hover { color: #FFF; }
   .phone-divider { color: #475569; }
 
-  header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+  header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.03); width: 100%; }
   
-  /* Основной контейнер шапки теперь имеет те же max-width: 1200px и padding: 0 24px, что и верхний бар */
-  .header-container { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
-  
-  .logo { font-family: 'Playfair Display', serif; font-size: 24px; text-decoration: none; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
-  .logo-globe { color: var(--accent); width: 22px; height: 22px; flex-shrink: 0; }
-  .logo-express { font-weight: 800; color: var(--primary); }
-  .logo-boda { font-weight: 300; color: var(--accent); margin-left: -1px; }
+  .logo { 
+    font-family: 'Playfair Display', Georgia, serif; 
+    font-size: 24px; 
+    font-weight: 700;
+    color: var(--primary); 
+    text-decoration: none; 
+    letter-spacing: -0.5px; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    transition: opacity 0.2s;
+  }
+  .logo:hover {
+    opacity: 0.9;
+  }
+  .logo-icon { 
+    color: var(--accent); 
+    width: 22px; 
+    height: 22px; 
+    flex-shrink: 0; 
+  }
   
   nav { display: flex; gap: 16px; align-items: center; }
   nav a.nav-link { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 500; transition: color 0.2s; }
@@ -142,6 +177,14 @@
   .mobile-lang-switcher, .mobile-contacts { display: none; }
 
   @media (max-width: 1024px) {
+    .logo { 
+      font-size: 28px; 
+    }
+    .logo-icon {
+      width: 26px;
+      height: 26px;
+    }
+
     .top-bar { display: none; }
     .menu-toggle { display: block; }
     nav { 
@@ -162,7 +205,7 @@
     }
     nav.active { display: flex; }
 
-    .mobile-lang-switcher { display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px; border-bottom: 1px실 solid #F1F5F9; }
+    .mobile-lang-switcher { display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid #F1F5F9; }
     .lang-title { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
     .lang-options { display: flex; gap: 8px; }
     .lang-pill { flex: 1; text-align: center; padding: 8px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--text-main); background: #F1F5F9; border-radius: 6px; border: 1px solid var(--border); }

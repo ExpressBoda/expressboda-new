@@ -2,10 +2,11 @@ backend:
   name: github
   repo: ExpressBoda/expressboda-new
   branch: main
+  local_backend: true # <--- добавьте это
 
 media_folder: "public/images"
 public_folder: "/images"
-
+# ... дальше ваши коллекции
 collections:
   - name: "pages"
     label: "Pages"
