@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/BaseLayout.astro';
 import Quiz from '../../components/Quiz.astro';
+import WhatYouNeed from '../../components/WhatYouNeed.astro';
 import content from '../../data/en.json';
 
 const lang = 'en';
@@ -111,8 +112,9 @@ const lang = 'en';
     </div>
   </section>
 
-  <!-- (Остальная часть контента без изменений) -->
-  
+  <!-- БЛОК "ЧТО ВАМ НУЖНО?" (А-ЛЯ SABADEL) -->
+  <WhatYouNeed />
+
   <section class="py-16 px-6 max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">Why International Couples Choose ExpressBoda</h2>

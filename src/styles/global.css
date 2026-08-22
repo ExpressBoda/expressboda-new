@@ -2,28 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Шрифты — Open Sans (текст) + Playfair Display (заголовки).
-*/
-/*
-@font-face {
-  font-family: 'Open Sans';
-  src: url('/fonts/open-sans-latin-cyrillic.woff2') format('woff2');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('/fonts/playfair-display.woff2') format('woff2');
-  font-display: swap;
-}
-*/
-
+/* --- Единая современная типографика (Без засечек / Sans-Serif) --- */
 html {
   scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
 }
 
-.font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+/* Принудительно отменяем засечки и задаем аккуратный трекинг для заголовков,
+   чтобы сайт выглядел монолитно в стиле премиальных сервисов */
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  letter-spacing: -0.025em; /* Сжатый межбуквенный интервал, как у Stripe и Apple */
 }
 
 /* --- Стили для квиза и элементов интерфейса --- */
