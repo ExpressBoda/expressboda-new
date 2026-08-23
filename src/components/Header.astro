@@ -1,36 +1,77 @@
 ---
 // Header.astro
+const currentLang = "ENG"; 
+const languages = [
+  { code: "ENG", label: "English", flag: "🇬🇧", url: "/en/" },
+  { code: "DEU", label: "Deutsch", flag: "🇩🇪", url: "/de/" },
+  { code: "ESP", label: "Español", flag: "🇪🇸", url: "/es/" },
+  { code: "RUS", label: "Русский", flag: "🇷🇺", url: "/ru/" }
+];
 ---
 
 <div class="site-header-wrapper">
-  <!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ -->
+  <!-- 1. ВЕРХНЯЯ МИНИ-ПАНЕЛЬ (Десктоп) -->
   <div class="top-bar">
     <div class="top-bar-container">
-      <div class="lang-switcher">
-        <a href="/en/" class="active">ENG</a>
-        <a href="/de/">DEU</a>
-        <a href="/es/">ESP</a>
-        <a href="/ru/">RUS</a>
+      
+      <!-- Языковой селектор с выпадающим списком -->
+      <div class="lang-dropdown-container">
+        <button id="desktopLangBtn" class="lang-current-btn" aria-label="Select language">
+          <span class="lang-flag">🇬🇧</span>
+          <span class="lang-code">{currentLang}</span>
+          <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="desktopLangMenu" class="lang-dropdown-menu hidden">
+          {languages.map(lang => (
+            <a href={lang.url} class={`lang-option ${lang.code === currentLang ? 'active' : ''}`}>
+              <span>{lang.flag}</span>
+              <span>{lang.label}</span>
+            </a>
+          ))}
+        </div>
       </div>
+
+      <!-- Правая часть: Телефоны и Иконки соцсетей -->
       <div class="top-bar-right">
         <div class="top-bar-phones">
           <a href="tel:+491744019766">📞 +49 174 4019766</a>
           <span class="phone-divider">|</span>
           <a href="tel:+34611592877">📞 +34 611 592877</a>
         </div>
+        
         <span class="phone-divider">•</span>
-        <a href="mailto:info@expressboda.com" class="top-bar-email">info@expressboda.com</a>
+        <div class="top-socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+        </div>
       </div>
+
     </div>
   </div>
 
   <!-- ОСНОВНАЯ ШАПКА -->
   <header>
     <div class="header-container">
-      <!-- Мобильная кнопка WhatsApp слева -->
-      <a href="https://wa.me/491754019766" target="_blank" class="mobile-header-whatsapp" aria-label="WhatsApp Chat">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-      </a>
+      
+      <!-- Мобильный выбор языка (слева у логотипа) -->
+      <div class="mobile-lang-container">
+        <button id="mobileLangBtn" class="mobile-lang-btn" aria-label="Language">
+          <span>🇬🇧</span>
+          <span>{currentLang}</span>
+        </button>
+        <div id="mobileLangMenu" class="mobile-lang-menu hidden">
+          {languages.map(lang => (
+            <a href={lang.url} class="mobile-lang-option">
+              <span>{lang.flag}</span>
+              <span>{lang.label}</span>
+            </a>
+          ))}
+        </div>
+      </div>
 
       <!-- Логотип -->
       <a href="/" class="logo">
@@ -42,7 +83,6 @@
           </svg>
           ExpressBoda
         </span>
-        <!-- Мобильная версия: Express (черный) + Boda (синий) по центру -->
         <span class="logo-mobile">
           Express<span class="logo-boda">Boda</span>
         </span>
@@ -55,17 +95,8 @@
         <span></span>
       </button>
 
+      <!-- Навигация -->
       <nav id="navMenu">
-        <div class="mobile-lang-switcher">
-          <span class="lang-title">Language</span>
-          <div class="lang-options">
-            <a href="/en/" class="lang-pill active">ENG</a>
-            <a href="/de/" class="lang-pill">DEU</a>
-            <a href="/es/" class="lang-pill">ESP</a>
-            <a href="/ru/" class="lang-pill">RUS</a>
-          </div>
-        </div>
-
         <a href="/documents/" class="nav-link">Documents</a>
         <a href="/pricing/" class="nav-link">Pricing</a>
         <a href="/apostille/" class="nav-link">Apostille</a>
@@ -73,22 +104,35 @@
         <a href="/faq/" class="nav-link">FAQ</a>
         <a href="/contacts/" class="nav-link">Contacts</a>
         
-        <a href="https://wa.me/491754019766" target="_blank" class="btn-whatsapp-header">
+        <!-- Десктопная кнопка WhatsApp -->
+        <a href="https://wa.me/491754019766" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-header desktop-only-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
           WhatsApp
         </a>
-        
-        <a href="#express-boda-quiz" class="btn-primary">Check chances</a>
 
+        <!-- Мобильные контакты (телефоны и имейл) сразу после Contacts -->
         <div class="mobile-contacts">
           <a href="tel:+491744019766">📞 +49 174 4019766</a>
           <a href="tel:+34611592877">📞 +34 611 592877</a>
           <a href="mailto:info@expressboda.com">✉️ info@expressboda.com</a>
         </div>
+        
+        <!-- Кнопка Email Us в самом низу мобильного меню -->
+        <a href="mailto:info@expressboda.com" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Email Us
+        </a>
       </nav>
     </div>
   </header>
 </div>
+
+<!-- ПЛАВАЮЩИЙ WHATSAPP ТОЛЬКО ДЛЯ МОБИЛЬНЫХ -->
+<a href="https://wa.me/491754019766" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
+  </svg>
+</a>
 
 <!-- Нижняя липкая панель для мобильных -->
 <div class="mobile-sticky-footer">
@@ -112,11 +156,9 @@
     --border: #E2E8F0;
     --text-main: #334155;
     --text-muted: #64748B;
-    --whatsapp: #10B981;
-    --whatsapp-bg: #ECFDF5;
+    --whatsapp: #25D366;
   }
 
-  /* Шапка прилипает целиком на десктопе */
   .site-header-wrapper {
     position: sticky;
     top: 0;
@@ -134,29 +176,30 @@
   .top-bar-container, .header-container { 
     max-width: 1200px; 
     margin: 0 auto; 
-    padding: 12px 24px; 
+    padding: 10px 24px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     width: 100%; 
   }
 
-  .top-bar-container {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-  
-  .lang-switcher { display: flex; gap: 12px; }
-  .lang-switcher a { color: #94A3B8; text-decoration: none; font-weight: 600; text-transform: uppercase; transition: color 0.2s; }
-  .lang-switcher a.active, .lang-switcher a:hover { color: #FFF; }
+  .lang-dropdown-container { position: relative; }
+  .lang-current-btn { background: none; border: 1px solid #334155; border-radius: 6px; color: #FFF; padding: 4px 8px; display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
+  .lang-arrow { transition: transform 0.2s; }
+  .lang-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 6px; background: #1E293B; border: 1px solid #334155; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); overflow: hidden; z-index: 110; min-width: 130px; }
+  .lang-dropdown-menu.hidden { display: none; }
+  .lang-option { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #CBD5E1; text-decoration: none; font-size: 13px; transition: background 0.15s; }
+  .lang-option:hover, .lang-option.active { background: #334155; color: #FFF; }
 
   .top-bar-right { display: flex; align-items: center; gap: 14px; }
   .top-bar-phones { display: flex; gap: 8px; align-items: center; }
   .top-bar-phones a { color: #F8FAFC; text-decoration: none; font-weight: 600; font-size: 13px; transition: color 0.2s; }
   .top-bar-phones a:hover { color: var(--accent); }
-  .top-bar-email { color: #CBD5E1; text-decoration: none; transition: color 0.2s; }
-  .top-bar-email:hover { color: #FFF; }
   .phone-divider { color: #475569; }
+
+  .top-socials { display: flex; gap: 12px; align-items: center; }
+  .top-socials a { color: #94A3B8; transition: color 0.2s; display: flex; align-items: center; }
+  .top-socials a:hover { color: #FFF; }
 
   header { 
     background: #ffffff; 
@@ -169,37 +212,28 @@
   .logo-desktop { display: flex; align-items: flex-start; gap: 0px; }
 
   .logo { 
-    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif; 
+    font-family: 'Montserrat', 'Inter', system-ui, sans-serif; 
     font-size: 26px; 
     font-weight: 800; 
     color: var(--primary); 
     text-decoration: none; 
     letter-spacing: -0.5px; 
-    transition: opacity 0.2s;
     line-height: 1;
   }
-  .logo:hover { opacity: 0.9; }
-  .logo-icon { 
-    color: var(--accent); 
-    width: 17px; 
-    height: 17px; 
-    position: relative;
-    top: -2px; 
-    flex-shrink: 0; 
-  }
+  .logo-icon { color: var(--accent); width: 17px; height: 17px; position: relative; top: -2px; flex-shrink: 0; }
   
   nav { display: flex; gap: 16px; align-items: center; }
   nav a.nav-link { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 500; transition: color 0.2s; }
   nav a.nav-link:hover { color: var(--accent); }
   
-  .btn-primary { background: var(--accent); color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.2s; border: none; cursor: pointer; display: inline-block; text-align: center; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; text-align: center; }
   .btn-primary:hover { background: var(--accent-hover); }
 
-  .btn-whatsapp-header { background: var(--whatsapp-bg); color: var(--whatsapp); border: 1px solid rgba(16, 185, 129, 0.3); padding: 9px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
-  .btn-whatsapp-header:hover { background: var(--whatsapp); color: #fff; border-color: var(--whatsapp); }
+  .btn-whatsapp-header { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; padding: 9px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+  .btn-whatsapp-header:hover { background: #C8E6C9; color: #1B5E20; }
 
-  .mobile-header-whatsapp { display: none; }
-  .mobile-lang-switcher, .mobile-contacts { display: none; }
+  .mobile-lang-container { display: none; position: relative; }
+  .mobile-contacts { display: none; }
   .mobile-sticky-footer { display: none; }
 
   .menu-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 24px; position: relative; padding: 0; z-index: 101; }
@@ -212,49 +246,37 @@
   .menu-toggle.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
   .menu-toggle.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
 
+  .whatsapp-float { display: none; }
+
   @media (max-width: 1024px) {
     .top-bar { display: none; }
+    .mobile-lang-container { display: block; }
     
     .logo-desktop { display: none; }
     .logo-mobile { 
       display: inline-block;
       font-weight: 800;
-      font-size: 20px;
+      font-size: 26px;
       letter-spacing: -0.5px;
       color: var(--primary);
     }
-    .logo-boda {
-      color: var(--accent); /* Синий цвет для Boda */
-    }
+    .logo-boda { color: var(--accent); }
 
     .header-container { 
-      display: grid;
-      grid-template-columns: 36px 1fr 30px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       padding: 14px 20px; 
     }
-    
-    .mobile-header-whatsapp {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--whatsapp);
-      background: var(--whatsapp-bg);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      justify-self: start;
-    }
 
-    .logo { 
-      justify-self: center; 
-      text-align: center;
-    }
+    .mobile-lang-btn { background: #F8FAFC; border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--text-main); }
+    .mobile-lang-menu { position: absolute; top: 100%; left: 0; margin-top: 6px; background: #fff; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); overflow: hidden; z-index: 110; min-width: 120px; }
+    .mobile-lang-menu.hidden { display: none; }
+    .mobile-lang-option { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: var(--text-main); text-decoration: none; font-size: 13px; font-weight: 500; }
+    .mobile-lang-option:hover { background: #F8FAFC; color: var(--accent); }
 
-    .menu-toggle { 
-      display: block; 
-      justify-self: end; 
-    }
+    .logo { justify-self: center; text-align: center; position: absolute; left: 50%; transform: translateX(-50%); }
+    .menu-toggle { display: block; }
 
     nav { 
       display: none; 
@@ -274,15 +296,12 @@
     }
     nav.active { display: flex; }
 
-    .mobile-lang-switcher { display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid #F1F5F9; }
-    .lang-title { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }
-    .lang-options { display: flex; gap: 8px; }
-    .lang-pill { flex: 1; text-align: center; padding: 8px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--text-main); background: #F1F5F9; border-radius: 6px; border: 1px solid var(--border); }
-    .lang-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-
     nav a.nav-link { font-size: 16px; padding: 4px 0; border-bottom: 1px solid #F8FAFC; }
     
-    .btn-whatsapp-header { justify-content: center; padding: 11px; }
+    /* Скрываем десктопную кнопку WhatsApp внутри мобильного меню */
+    .desktop-only-btn { display: none; }
+
+    .btn-primary { justify-content: center; padding: 12px; margin-top: 4px; }
 
     .mobile-contacts {
       display: flex;
@@ -291,15 +310,31 @@
       padding-top: 14px;
       margin-top: 4px;
       border-top: 1px solid #F1F5F9;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
     }
-    .mobile-contacts a {
-      color: var(--text-main);
-      text-decoration: none;
-    }
+    .mobile-contacts a { color: var(--text-main); text-decoration: none; transition: color 0.2s; }
+    .mobile-contacts a:hover { color: var(--accent); }
 
-    /* Мобильный липкий футер внизу */
+    .whatsapp-float {
+      display: flex;
+      position: fixed;
+      bottom: 75px; 
+      right: 1.5rem;
+      background-color: var(--whatsapp);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      color: white;
+      z-index: 99;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.08); }
+
     .mobile-sticky-footer {
       display: block;
       position: fixed;
@@ -309,7 +344,7 @@
       background: #ffffff;
       border-top: 1px solid var(--border);
       box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
-      z-index: 99;
+      z-index: 98;
       padding: 10px 16px;
       animation: slideUp 0.3s ease-out;
     }
@@ -323,22 +358,9 @@
       margin: 0 auto;
     }
 
-    .sticky-footer-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sticky-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--primary);
-      line-height: 1.2;
-    }
-
-    .sticky-subtitle {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
+    .sticky-footer-text { display: flex; flex-direction: column; }
+    .sticky-title { font-size: 13px; font-weight: 700; color: var(--primary); line-height: 1.2; }
+    .sticky-subtitle { font-size: 11px; color: var(--text-muted); }
 
     .sticky-cta-btn {
       background: var(--accent);
@@ -354,10 +376,7 @@
       white-space: nowrap;
       transition: background 0.2s;
     }
-
-    .sticky-cta-btn:hover {
-      background: var(--accent-hover);
-    }
+    .sticky-cta-btn:hover { background: var(--accent-hover); }
   }
 
   @keyframes slideUp {
@@ -380,5 +399,26 @@
       navMenu?.classList.remove('active');
       menuToggle?.classList.remove('active');
     });
+  });
+
+  const desktopLangBtn = document.getElementById('desktopLangBtn');
+  const desktopLangMenu = document.getElementById('desktopLangMenu');
+
+  desktopLangBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    desktopLangMenu?.classList.toggle('hidden');
+  });
+
+  const mobileLangBtn = document.getElementById('mobileLangBtn');
+  const mobileLangMenu = document.getElementById('mobileLangMenu');
+
+  mobileLangBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileLangMenu?.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', () => {
+    desktopLangMenu?.classList.add('hidden');
+    mobileLangMenu?.classList.add('hidden');
   });
 </script>
