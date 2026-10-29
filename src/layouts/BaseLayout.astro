@@ -9,9 +9,14 @@ interface Props {
   title: string;
   description: string;
   lang: Lang;
+  noindex?: boolean;
+  alternateLanguages?: Lang[];
 }
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, noindex, alternateLanguages } = Astro.props;
+
+// Автоматически берем текущий путь из URL (например, /en/documents)
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -19,33 +24,21 @@ const { title, description, lang } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={title} description={description} lang={lang} />
+    <SEO title={title} description={description} lang={lang} noindex={noindex} alternateLanguages={alternateLanguages} />
     
     <!-- Иконки сайта -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     
-    <!-- СКРИПТ АВТОРИЗАЦИИ NETLIFY IDENTITY -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" data-netlify-identity-url="https://imaginative-licorice-389ef0.netlify.app"></script>
   </head>
   <body class="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
-    <Header lang={lang} />
+    <!-- Передаем и язык, и текущий путь в шапку -->
+    <Header lang={lang} currentPath={currentPath} />
+
     <main class="flex-1">
       <slot />
     </main>
     <Footer lang={lang} />
 
-    <!-- Скрипт для корректного перенаправления после подтверждения почты/входа -->
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.reload();
-            });
-          }
-        });
-      }
-    </script>
   </body>
 </html>

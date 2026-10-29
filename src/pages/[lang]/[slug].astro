@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { foundationPages, type FoundationPage } from '../../data/site';
+import { languages, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return (Object.keys(languages) as Lang[]).flatMap((lang) => foundationPages.map((page) => ({ params: { lang, slug: page.slug }, props: { lang, page } })));
+}
+
+const { lang, page } = Astro.props as { lang: Lang; page: FoundationPage };
+const isLegalPage = page.slug === 'privacy' || page.slug === 'terms';
+---
+
+<BaseLayout lang={lang} title={page.title[lang]} description={page.summary[lang]} noindex={true}>
+  <section class="mx-auto max-w-4xl px-6 py-20 text-center">
+    <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-blue-700">ExpressBoda</p>
+    <h1 class="font-serif text-4xl font-bold text-slate-900">{page.title[lang]}</h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">{page.summary[lang]}</p>
+    {!isLegalPage && page.slug !== 'start-your-application' && <a href={`/${lang}/start-your-application/`} class="mt-10 inline-flex rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700">{foundationPages.find((item) => item.slug === 'start-your-application')?.title[lang]}</a>}
+  </section>
+</BaseLayout>

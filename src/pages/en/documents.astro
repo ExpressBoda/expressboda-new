@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import Quiz from '../../../../components/Quiz.astro';
+
+const lang = 'en';
+---
+
+<Layout 
+  title="Required Documents for Marriage in Denmark | Express Boda"
+  description="Clear and minimal document checklist for international couples to get married in Denmark. No birth certificates required for most. Free document check."
+  lang={lang}
+  noindex={true}
+  alternateLanguages={[]}
+>
+
+  <!-- HERO SECTION -->
+  <section class="bg-gradient-to-b from-slate-100 to-[#FAFAFC] pt-14 pb-12 px-6 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-blue-700 text-xs font-semibold">
+        <span>📋 Simple & Transparent Requirements</span>
+      </div>
+
+      <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
+        What Documents Do You Need to Get Married in Denmark?
+      </h1>
+
+      <p class="text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        Unlike traditional bureaucratic marriages, Denmark requires a minimal, straightforward set of documents. In most cases, you don't even need birth certificates or complex legalizations.
+      </p>
+
+      <div class="pt-2 flex flex-wrap justify-center gap-4">
+        <a href="#checklist" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition shadow-md text-base block">
+          View Document Checklist ↓
+        </a>
+        <a href="/en/#checker" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold px-8 py-4 rounded-xl transition shadow-sm text-base block">
+          Check via 1-min Quiz ⚡
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CORE CHECKLIST SECTION -->
+  <section id="checklist" class="py-16 px-6 max-w-5xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">Standard Document Checklist</h2>
+      <p class="text-slate-600">The core paperwork required by the Danish Agency of Family Law (AFL) for international couples</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- Doc 1: Passports -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold mb-4">🛂</div>
+          <h3 class="font-bold text-xl text-slate-900 mb-2">Valid Passports</h3>
+          <p class="text-slate-600 text-sm mb-4">
+            Scans of the main pages of valid passports for both partners. 
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><span>✓</span> Must be valid for at least 3 months past your travel date</li>
+            <li class="flex items-center gap-2"><span>✓</span> All corners and text must be fully visible in scans</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Doc 2: Legal Residence -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold mb-4">🇪🇺</div>
+          <h3 class="font-bold text-xl text-slate-900 mb-2">Legal Residence Proof</h3>
+          <p class="text-slate-600 text-sm mb-4">
+            Proof of legal entry or residency in your current country of residence or the EU (e.g., residence permit, visa, or Schengen entry stamp).
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><span>✓</span> Residence cards (TIE, Blue Card, etc.) or valid visas</li>
+            <li class="flex items-center gap-2"><span>✓</span> Flight tickets or entry stamps if traveling for the wedding</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Doc 3: Marital Status -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold mb-4">📜</div>
+          <h3 class="font-bold text-xl text-slate-900 mb-2">Certificate of Marital Status</h3>
+          <p class="text-slate-600 text-sm mb-4">
+            A document proving your current civil status (single, divorced, or widowed). 
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><span>✓</span> Certificate of Singleness / Civil Status Extract</li>
+            <li class="flex items-center gap-2"><span>✓</span> Must be recent (typically issued within the last 3–4 months)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Doc 4: Previous Marriages -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold mb-4">⚖️</div>
+          <h3 class="font-bold text-xl text-slate-900 mb-2">Divorce or Death Certificates</h3>
+          <p class="text-slate-600 text-sm mb-4">
+            Required only if one or both partners have been previously married.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><span>✓</span> Final divorce decree with official stamp/dissolution date</li>
+            <li class="flex items-center gap-2"><span>✓</span> Death certificate of former spouse if widowed</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SITUATION BREAKDOWN (EU vs Non-EU) -->
+  <section class="bg-slate-50 py-16 px-6 border-t border-b border-slate-200">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-serif text-3xl font-bold text-slate-900 mb-4">Requirements by Your Residency Status</h2>
+        <p class="text-slate-600">Depending on where you live and your citizenship, small nuances may apply</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <div class="text-blue-600 font-bold text-sm uppercase tracking-wider mb-2">EU / EEA Citizens</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">Living in EU</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            The simplest case. Usually requires valid passports, a certificate of marital status from your home municipality or consulate, and proof of residence.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <div class="text-emerald-600 font-bold text-sm uppercase tracking-wider mb-2">Third-Country Citizens</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">With EU Residence Permit</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            If you hold a valid European residence card (e.g., in Spain, Germany, etc.), you can easily marry in Denmark. We ensure all residency permits align with AFL guidelines.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <div class="text-amber-600 font-bold text-sm uppercase tracking-wider mb-2">Tourist / Visa Entry</div>
+          <h4 class="font-bold text-slate-900 text-lg mb-2">Binational Couples</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Even if one partner enters on a Schengen visa or visa-free, marriage in Denmark is fully legal. We audit entry stamps and dates to guarantee compliance.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE CHECK BANNER / CTA -->
+  <section class="py-16 px-6 max-w-4xl mx-auto text-center">
+    <div class="bg-blue-900 text-white p-10 rounded-3xl shadow-xl space-y-6">
+      <h2 class="font-serif text-3xl font-bold">Not sure if your documents are sufficient?</h2>
+      <p class="text-blue-100 text-base max-w-xl mx-auto">
+        Don't risk rejections or delays with the Danish Agency of Family Law. Let our experts review your papers for free before submission.
+      </p>
+      <div class="pt-2">
+        <a href="/en/#checker" class="inline-block bg-white text-blue-900 hover:bg-blue-50 font-bold px-8 py-4 rounded-xl transition shadow-md text-base">
+          Start Free Document Check →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ FOR DOCUMENTS -->
+  <section class="bg-slate-50 py-16 px-6 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 text-center mb-10">Frequently Asked Questions About Documents</h2>
+      
+      <div class="space-y-4">
+        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
+          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
+            Do documents need to be translated into Danish?
+            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600 text-sm border-t border-slate-100 pt-4">
+            <p>No! The Danish Agency of Family Law (AFL) officially accepts documents in <strong>English, German, and Danish</strong>. In most cases, standard international documents or English versions do not require any translation.</p>
+          </div>
+        </details>
+
+        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
+          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
+            Are birth certificates required?
+            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600 text-sm border-t border-slate-100 pt-4">
+            <p>In the vast majority of cases, <strong>birth certificates are not required</strong> by the Danish authorities. This is one of the main reasons why getting married in Denmark is significantly faster and easier than in other countries.</p>
+          </div>
+        </details>
+
+        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
+          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
+            How old can my Certificate of Marital Status be?
+            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
+          </summary>
+          <div class="px-6 pb-6 text-slate-600 text-sm border-t border-slate-100 pt-4">
+            <p>The certificate proving your civil status must be fresh — typically issued within the last <strong>3 to 4 months</strong> prior to your application submission date to ensure it reflects your current status accurately.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</Layout>
