@@ -1,3 +1,12 @@
----
-return Astro.redirect('/en/', 301);
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <link rel="canonical" href={new URL('/en/', Astro.site).href} />
+    <title>ExpressBoda</title>
+  </head>
+  <body>
+    <a href="/en/">Continue to the English homepage</a>
+  </body>
+</html>
