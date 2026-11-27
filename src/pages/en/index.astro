@@ -8,68 +8,32 @@ const lang = 'en';
 ---
 
 <Layout 
-  title="Fast & Legal Marriage in Denmark for International Couples | Express Boda"
-  description="Direct application to the Danish Agency of Family Law (AFL). Guaranteed correct document preparation, full support at every step, and fast legalization."
+  title="Get Married in Denmark for International Couples"
+  description="Prepare your documents, apply to the Danish Agency of Family Law, and book a civil wedding in Denmark with support from ExpressBoda."
   lang={lang}
   alternateLanguages={['en']}
 >
 
-  <!-- 1. HERO SECTION WITH QUIZ -->
-  <section class="bg-gradient-to-b from-slate-100 to-[#FAFAFC] pt-14 pb-10 px-6 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
-      
-      <div class="md:col-span-7 space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
-        
-        <!-- Trustpilot Widget -->
-        <div class="flex justify-center md:justify-start">
-          <div class="inline-block px-3 py-2 bg-white rounded-xl shadow-sm border border-slate-200 transition hover:shadow-md overflow-hidden">
-            <div class="trustpilot-widget" 
-                 data-locale="en-US" 
-                 data-template-id="5419b6a8b0d04a076446a9ad" 
-                 data-businessunit-id="64706bc1a10721677e3d43e9" 
-                 data-style-height="40px" 
-                 data-style-width="220px" 
-                 data-theme="light" 
-                 data-min-review-count="10" 
-                 data-style-alignment="left">
-              <a href="https://www.trustpilot.com/review/expressboda.com" target="_blank" rel="noopener">Trustpilot</a>
-            </div>
-            <script async src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" charset="utf-8"></script>
-          </div>
-        </div>
-
-        <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
-          {content.hero.title}
-        </h1>
-
-        <p class="text-slate-600 text-base leading-relaxed max-w-xl md:max-w-none">
-          {content.hero.subtitle}
+  <section class="bg-slate-950 px-6 py-16 text-white sm:py-24">
+    <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-3 lg:items-center">
+      <div class="lg:col-span-2">
+        <h1 class="max-w-2xl text-4xl font-bold leading-tight sm:text-6xl">Get Married in Denmark</h1>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
+          ExpressBoda helps international couples prepare their documents, apply to the Danish Agency of Family Law, and book a civil wedding ceremony in Denmark.
         </p>
-
-        <!-- Perks list: clean vertical alignment with left-aligned text on mobile -->
-        <div class="flex flex-col gap-3 pt-1 text-sm text-slate-700 font-medium items-start w-full max-w-md md:max-w-none">
-          {content.hero.perks.map((perk) => (
-            <div class="flex items-start gap-2.5 text-left w-full">
-              <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
-              <span>{perk}</span>
-            </div>
-          ))}
-        </div>
-
-        <!-- CTA Button: Full width on mobile and tablets, original auto width on desktop -->
-        <div class="pt-2 flex flex-col items-center md:items-start gap-4 w-full max-w-md md:max-w-none">
-          <a href="#services" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition shadow-md text-center block text-base">
-            {content.hero.secondary_cta}
-          </a>
-          <span class="text-xs text-slate-500 text-center md:text-left">
-            ⚡ Or take a 1-min case check via the quiz on the right
-          </span>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#checker" class="rounded-xl bg-white px-6 py-4 text-center font-semibold text-slate-950 hover:bg-slate-100">Check my case</a>
+          <a href="#services" class="rounded-xl border border-slate-500 px-6 py-4 text-center font-semibold hover:bg-slate-800">View packages</a>
         </div>
       </div>
-
-      <div id="checker" class="md:col-span-5 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
-        <Quiz />
-      </div>
+      <aside class="border-t border-slate-700 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <h2 class="text-lg font-semibold">Support at each step</h2>
+        <ul class="mt-4 space-y-3 text-slate-300">
+          <li>Document preparation</li>
+          <li>Marriage application support</li>
+          <li>Ceremony booking</li>
+        </ul>
+      </aside>
     </div>
   </section>
 
@@ -310,8 +274,8 @@ const lang = 'en';
               <li class="flex items-start gap-2"><span>✓</span> Guidance on getting the Apostille</li>
             </ul>
           </div>
-          <a href="/en/services/consultation" class="block text-center w-full md:w-auto bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-xl font-semibold transition shadow-sm text-base">
-            Explore package
+          <a href="#checker" class="block text-center w-full md:w-auto bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-xl font-semibold transition shadow-sm text-base">
+            Ask about this package
           </a>
         </div>
 
@@ -332,8 +296,8 @@ const lang = 'en';
               <li class="flex items-start gap-2"><span>✓</span> Date booking (~60-90 days after approval)</li>
             </ul>
           </div>
-          <a href="/en/services/standard" class="block text-center w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold transition shadow-md text-base">
-            Explore package
+          <a href="#checker" class="block text-center w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold transition shadow-md text-base">
+            Ask about this package
           </a>
         </div>
 
@@ -352,8 +316,8 @@ const lang = 'en';
               <li class="flex items-start gap-2"><span>✓</span> <strong>Apostille included</strong> with standard EU delivery</li>
             </ul>
           </div>
-          <a href="/en/services/vip" class="block text-center w-full md:w-auto bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-xl font-semibold transition shadow-sm text-base">
-            Explore package
+          <a href="#checker" class="block text-center w-full md:w-auto bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-xl font-semibold transition shadow-sm text-base">
+            Ask about this package
           </a>
         </div>
 
@@ -364,58 +328,42 @@ const lang = 'en';
   <!-- WHAT YOU NEED -->
   <WhatYouNeed />
 
-  <!-- FAQ SECTION -->
-  <section class="bg-slate-50 py-16 px-6 border-t border-slate-200">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="font-serif text-3xl font-bold text-slate-900 text-center mb-10">Frequently Asked Questions</h2>
-      
-      <div class="space-y-4">
-        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
-          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
-            Why is marriage in Denmark fast and easy for international couples?
-            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
-          </summary>
-          <div class="px-6 pb-6 text-slate-600 text-sm space-y-2 border-t border-slate-100 pt-4">
-            <p>The process is significantly <strong>faster</strong> than in many other countries. It is designed to be <strong>easy for international couples</strong> because fewer documents are required; usually, birth certificates or complex legalizations of IDs are not necessary.</p>
-            <p>The Danish marriage certificate is internationally recognized, making it a reliable solution for family reunification and other legal processes worldwide.</p>
-          </div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
-          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
-            How long does it take to get a marriage license?
-            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
-          </summary>
-          <div class="px-6 pb-6 text-slate-600 text-sm border-t border-slate-100 pt-4">
-            <p>Our agency ensures a <strong>fast and easy</strong> application process. Once submitted, the <strong>Danish Agency of Family Law (AFL)</strong> typically reviews the application within 5–7 working days. We handle the paperwork to ensure there are no delays in your wedding schedule.</p>
-          </div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
-          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
-            Can non-EU citizens legally marry in Denmark?
-            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
-          </summary>
-          <div class="px-6 pb-6 text-slate-600 text-sm border-t border-slate-100 pt-4">
-            <p>Yes, absolutely. We specialize in making the process <strong>easy for binational and international couples</strong>. As long as you enter Denmark legally (e.g., with a Schengen visa or visa-free entry), we can help you obtain your marriage license and get married legally.</p>
-          </div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 overflow-hidden group">
-          <summary class="font-bold text-slate-900 p-6 cursor-pointer flex justify-between items-center select-none">
-            Is the marriage certificate valid in Germany and worldwide?
-            <span class="transition group-open:rotate-180 text-blue-600 font-normal">▼</span>
-          </summary>
-          <div class="px-6 pb-6 text-slate-600 text-sm border-t border-slate-100 pt-4">
-            <p>Yes. After your ceremony, you receive an international marriage certificate. To make the process even more <strong>comprehensive and easy</strong>, we offer an <strong>Apostille service</strong>, ensuring your certificate is legally recognized for residency and official use in Germany and globally.</p>
-          </div>
-        </details>
+  <section id="checker" class="scroll-mt-24 bg-slate-100 px-6 py-16">
+    <div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 md:items-start">
+      <div>
+        <h2 class="text-3xl font-bold text-slate-900">Check your situation</h2>
+        <p class="mt-4 max-w-md text-slate-700">Tell us a little about both partners so we can suggest the next step and the support that fits your situation.</p>
       </div>
+      <div class="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <Quiz />
+      </div>
+    </div>
+  </section>
 
-      <div class="text-center mt-10">
-        <a href="/en/faq" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition shadow-md text-base">
-          View all Frequently Asked Questions and Answers →
-        </a>
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <h2 class="text-3xl font-bold text-slate-900">Planning your wedding in Denmark</h2>
+    <a href="/en/documents/" class="mt-6 block max-w-xl rounded-2xl border border-slate-200 p-6 hover:border-slate-500">
+      <h3 class="text-xl font-semibold text-slate-900">Documents you may need</h3>
+      <p class="mt-2 text-slate-700">Start with an overview of passports, residence documents, and paperwork for previous marriages.</p>
+    </a>
+  </section>
+
+  <section class="border-t border-slate-200 bg-slate-50 px-6 py-16">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-8 text-3xl font-bold text-slate-900">Frequently asked questions</h2>
+      <div class="space-y-3">
+        <details class="rounded-xl border border-slate-200 bg-white p-5">
+          <summary class="cursor-pointer font-semibold text-slate-900">What does ExpressBoda help us with?</summary>
+          <p class="mt-3 text-slate-700">We help you prepare your documents, apply to the Danish Agency of Family Law, and book a civil ceremony. The exact support depends on your package.</p>
+        </details>
+        <details class="rounded-xl border border-slate-200 bg-white p-5">
+          <summary class="cursor-pointer font-semibold text-slate-900">What documents should we start with?</summary>
+          <p class="mt-3 text-slate-700">Start with the <a href="/en/documents/" class="text-blue-700 underline">document overview</a>. We can help you work out which additional documents you need for your situation.</p>
+        </details>
+        <details class="rounded-xl border border-slate-200 bg-white p-5">
+          <summary class="cursor-pointer font-semibold text-slate-900">When can we choose a ceremony date?</summary>
+          <p class="mt-3 text-slate-700">We help you look for available dates once your application is approved. Availability depends on the municipality and your preferred travel dates.</p>
+        </details>
       </div>
     </div>
   </section>
